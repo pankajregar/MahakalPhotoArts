@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moments Studio - Wedding Photography & Videography</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #34495e 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #c19b2e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 15px auto;
+        }
+
+        .service-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(212, 175, 55, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .gallery-filter {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery-filter button {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 25px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .gallery-filter button:hover,
+        .gallery-filter button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .gallery-overlay p {
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .video-thumbnail:hover img {
+            transform: scale(1.1);
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
+
+        .video-thumbnail:hover .video-play-btn {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: #c19b2e;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .video-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-color);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(212, 175, 55, 0.8);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 2rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--primary-color);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .package-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .package-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .package-card.featured {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #fff 0%, #fef9e7 100%);
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .testimonial-stars {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-camera"></i> Moments Studio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#videos">Videos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="fade-in">Capturing Your Special Moments</h1>
+            <p class="fade-in">Professional Wedding Photography & Videography Services</p>
+            <a href="#contact" class="btn btn-primary btn-lg">Book Your Wedding</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer comprehensive wedding coverage tailored to your needs</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card text-center p-4">
+                        <div class="card-body">
+                            <i class="fas fa-camera service-icon"></i>
+                            <h3>Wedding Photography</h3>
+                            <p>Stunning high-resolution photographs capturing every precious moment of your special day with artistic precision.</p>
+                            <ul class="text-start">
+                                <li>Pre-wedding shoot</li>
+                                <li>Ceremony coverage</li>
+                                <li>Reception photography</li>
+                                <li>Edited digital gallery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card text-center p-4">
+                        <div class="card-body">
+                            <i class="fas fa-video service-icon"></i>
+                            <h3>Cinematic Videography</h3>
+                            <p>Professional video production with drone shots, slow-motion captures, and cinematic storytelling.</p>
+                            <ul class="text-start">
+                                <li>4K video recording</li>
+                                <li>Drone footage</li>
+                                <li>Highlight reel</li>
+                                <li>Full ceremony video</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card text-center p-4">
+                        <div class="card-body">
+                            <i class="fas fa-gift service-icon"></i>
+                            <h3>Complete Package</h3>
+                            <p>Comprehensive coverage combining photography and videography for the ultimate wedding documentation.</p>
+                            <ul class="text-start">
+                                <li>Photo + Video combo</li>
+                                <li>Wedding album</li>
+                                <li>Online gallery</li>
+                                <li>Same-day highlights</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Portfolio</h2>
+                <p>Browse through our recent wedding captures</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="Wedding Ceremony">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="Couple Portrait">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="Reception">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" alt="Pre-Wedding">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80" alt="Outdoor Shoot">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Details">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery Section -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Image Gallery</h2>
+                <p>Explore our complete collection of wedding moments</p>
+            </div>
+            
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ceremony">Ceremony</button>
+                <button class="filter-btn" data-filter="couple">Couple Portraits</button>
+                <button class="filter-btn" data-filter="reception">Reception</button>
+                <button class="filter-btn" data-filter="prewedding">Pre-Wedding</button>
+                <button class="filter-btn" data-filter="details">Details</button>
+            </div>
+
+            <div class="row gallery-grid">
+                <div class="col-md-4 gallery-item" data-category="ceremony">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="Wedding Ceremony">
+                    <div class="gallery-overlay">
+                        <h4>Wedding Ceremony</h4>
+                        <p>Sacred moments captured beautifully</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="couple">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="Couple Portrait">
+                    <div class="gallery-overlay">
+                        <h4>Romantic Portrait</h4>
+                        <p>Love in every frame</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="reception">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="Reception">
+                    <div class="gallery-overlay">
+                        <h4>Reception Party</h4>
+                        <p>Celebrating together</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="prewedding">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" alt="Pre-Wedding">
+                    <div class="gallery-overlay">
+                        <h4>Pre-Wedding Shoot</h4>
+                        <p>Before the big day</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="couple">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80" alt="Outdoor Couple">
+                    <div class="gallery-overlay">
+                        <h4>Outdoor Romance</h4>
+                        <p>Nature's perfect backdrop</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="details">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Wedding Details">
+                    <div class="gallery-overlay">
+                        <h4>Wedding Details</h4>
+                        <p>Every detail matters</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="ceremony">
+                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="Vows Exchange">
+                    <div class="gallery-overlay">
+                        <h4>The Vows</h4>
+                        <p>Promises for a lifetime</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="reception">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80" alt="First Dance">
+                    <div class="gallery-overlay">
+                        <h4>First Dance</h4>
+                        <p>Dancing into forever</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="prewedding">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80" alt="Engagement">
+                    <div class="gallery-overlay">
+                        <h4>Engagement Session</h4>
+                        <p>The beginning of forever</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="details">
+                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=800&q=80" alt="Rings">
+                    <div class="gallery-overlay">
+                        <h4>Wedding Rings</h4>
+                        <p>Symbol of eternal love</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="couple">
+                    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&q=80" alt="Sunset Couple">
+                    <div class="gallery-overlay">
+                        <h4>Golden Hour</h4>
+                        <p>Magical lighting moments</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery-item" data-category="ceremony">
+                    <img src="https://images.unsplash.com/photo-1529634597447-89b4917e5b93?w=800&q=80" alt="Bride Entry">
+                    <div class="gallery-overlay">
+                        <h4>Grand Entry</h4>
+                        <p>The most awaited moment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Wedding Films</h2>
+                <p>Watch our cinematic wedding videos and highlights</p>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="video-container">
+                        <iframe src="#" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="text-center">
+                        <h3>Featured: Priya & Rahul's Wedding Film</h3>
+                        <p>A beautiful celebration of love at The Grand Palace, Jaipur</p>
+                        <small class="text-muted">(Demo video - Replace with your actual wedding videos)</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail" data-video="#">
+                            <img src="https://images.unsplash.com/photo-1525258798990-60e644f4d2db?w=800&q=80" alt="Wedding Highlights">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Sneha & Arjun Wedding Highlights</h4>
+                            <p><i class="fas fa-clock"></i> 3:45 mins | Traditional Wedding</p>
+                            <small class="text-muted">(Demo placeholder)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail" data-video="#">
+                            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80" alt="Pre-Wedding Video">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Anjali & Vikram Pre-Wedding</h4>
+                            <p><i class="fas fa-clock"></i> 2:30 mins | Outdoor Location</p>
+                            <small class="text-muted">(Demo placeholder)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail" data-video="#">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" alt="Destination Wedding">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Destination Wedding in Udaipur</h4>
+                            <p><i class="fas fa-clock"></i> 5:20 mins | Palace Wedding</p>
+                            <small class="text-muted">(Demo placeholder)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail" data-video="#">
+                            <img src="https://images.unsplash.com/photo-1522413452208-996ff3f3e740?w=800&q=80" alt="Engagement Video">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Engagement Ceremony Highlights</h4>
+                            <p><i class="fas fa-clock"></i> 2:15 mins | Indoor Event</p>
+                            <small class="text-muted">(Demo placeholder)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail" data-video="#">
+                            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80" alt="Reception Video">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Grand Reception Party</h4>
+                            <p><i class="fas fa-clock"></i> 4:10 mins | Evening Celebration</p>
+                            <small class="text-muted">(Demo placeholder)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail" data-video="#">
+                            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80" alt="Cinematic Film">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Cinematic Love Story</h4>
+                            <p><i class="fas fa-clock"></i> 6:00 mins | Complete Film</p>
+                            <small class="text-muted">(Demo placeholder)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox for Gallery -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Wedding Video</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="video-container">
+                        <iframe id="modalVideo" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Packages</h2>
+                <p>Choose the perfect package for your wedding</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="package-card">
+                        <h3>Basic</h3>
+                        <div class="package-price">₹50,000</div>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> 6 Hours Coverage</li>
+                            <li><i class="fas fa-check text-success"></i> 1 Photographer</li>
+                            <li><i class="fas fa-check text-success"></i> 300+ Edited Photos</li>
+                            <li><i class="fas fa-check text-success"></i> Online Gallery</li>
+                            <li><i class="fas fa-times text-muted"></i> Video Coverage</li>
+                            <li><i class="fas fa-times text-muted"></i> Photo Album</li>
+                        </ul>
+                        <button class="btn btn-primary mt-3" onclick="bookPackage('Basic')">Book Now</button>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="package-card featured">
+                        <div class="badge bg-danger mb-3">Most Popular</div>
+                        <h3>Premium</h3>
+                        <div class="package-price">₹1,20,000</div>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> Full Day Coverage</li>
+                            <li><i class="fas fa-check text-success"></i> 2 Photographers</li>
+                            <li><i class="fas fa-check text-success"></i> 1 Videographer</li>
+                            <li><i class="fas fa-check text-success"></i> 500+ Edited Photos</li>
+                            <li><i class="fas fa-check text-success"></i> Cinematic Video</li>
+                            <li><i class="fas fa-check text-success"></i> 30-Page Album</li>
+                        </ul>
+                        <button class="btn btn-primary mt-3" onclick="bookPackage('Premium')">Book Now</button>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="package-card">
+                        <h3>Luxury</h3>
+                        <div class="package-price">₹2,50,000</div>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> 2 Days Coverage</li>
+                            <li><i class="fas fa-check text-success"></i> 3 Photographers</li>
+                            <li><i class="fas fa-check text-success"></i> 2 Videographers</li>
+                            <li><i class="fas fa-check text-success"></i> Unlimited Photos</li>
+                            <li><i class="fas fa-check text-success"></i> Drone Coverage</li>
+                            <li><i class="fas fa-check text-success"></i> Premium Album</li>
+                        </ul>
+                        <button class="btn btn-primary mt-3" onclick="bookPackage('Luxury')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>What our happy couples say about us</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Moments Studio captured our wedding beautifully! Every photo tells a story. Highly recommended!"</p>
+                        <h5>- Priya & Rahul</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Professional team, amazing quality, and great customer service. Our wedding video is a masterpiece!"</p>
+                        <h5>- Sneha & Arjun</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Best decision we made for our wedding! The photos exceeded all our expectations. Thank you!"</p>
+                        <h5>- Anjali & Vikram</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Your Wedding</h2>
+                <p>Get in touch with us to discuss your requirements</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="contact-form">
+                        <form id="bookingForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Your Name *</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Partner's Name *</label>
+                                    <input type="text" class="form-control" id="partnerName" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Phone *</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Wedding Date *</label>
+                                    <input type="date" class="form-control" id="weddingDate" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Service Required *</label>
+                                    <select class="form-control" id="service" required>
+                                        <option value="">Select Service</option>
+                                        <option value="photography">Photography Only</option>
+                                        <option value="videography">Videography Only</option>
+                                        <option value="both">Photography & Videography</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Venue Location *</label>
+                                <input type="text" class="form-control" id="venue" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Package Preference</label>
+                                <select class="form-control" id="package">
+                                    <option value="">Select Package</option>
+                                    <option value="basic">Basic - ₹50,000</option>
+                                    <option value="premium">Premium - ₹1,20,000</option>
+                                    <option value="luxury">Luxury - ₹2,50,000</option>
+                                    <option value="custom">Custom Package</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Additional Requirements</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Tell us about your special requirements..."></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5">Submit Booking Request</button>
+                            </div>
+                        </form>
+                        <div id="successMessage" class="alert alert-success mt-4" style="display: none;">
+                            <i class="fas fa-check-circle"></i> Thank you! Your booking request has been submitted. We'll contact you within 24 hours.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4><i class="fas fa-camera"></i> Moments Studio</h4>
+                    <p>Capturing your precious moments with passion and professionalism since 2015.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#services" class="text-white text-decoration-none">Services</a></li>
+                        <li><a href="#gallery" class="text-white text-decoration-none">Gallery</a></li>
+                        <li><a href="#videos" class="text-white text-decoration-none">Videos</a></li>
+                        <li><a href="#packages" class="text-white text-decoration-none">Packages</a></li>
+                        <li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Photography Lane, Jaipur, Rajasthan</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@momentsstudio.com</p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1)">
+            <div class="text-center">
+                <p>&copy; 2025 Moments Studio. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Smooth scrolling
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                var target = $(this.getAttribute('href'));
+                if(target.length) {
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 70
+                    }, 1000);
+                }
+            });
+
+            // Navbar background on scroll
+            $(window).scroll(function() {
+                if($(this).scrollTop() > 50) {
+                    $('.navbar').css('background', 'rgba(44, 62, 80, 0.98)');
+                } else {
+                    $('.navbar').css('background', 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)');
+                }
+            });
+
+            // Form submission
+            $('#bookingForm').submit(function(e) {
+                e.preventDefault();
+                
+                var formData = {
+                    name: $('#name').val(),
+                    partnerName: $('#partnerName').val(),
+                    email: $('#email').val(),
+                    phone: $('#phone').val(),
+                    weddingDate: $('#weddingDate').val(),
+                    service: $('#service').val(),
+                    venue: $('#venue').val(),
+                    package: $('#package').val(),
+                    message: $('#message').val()
+                };
+
+                console.log('Booking Request:', formData);
+                
+                $('#bookingForm')[0].reset();
+                $('#successMessage').fadeIn();
+                
+                setTimeout(function() {
+                    $('#successMessage').fadeOut();
+                }, 5000);
+            });
+
+            // Portfolio hover effect
+            $('.portfolio-item').hover(
+                function() {
+                    $(this).find('.portfolio-overlay').css('opacity', '1');
+                },
+                function() {
+                    $(this).find('.portfolio-overlay').css('opacity', '0');
+                }
+            );
+
+            // Animate elements on scroll
+            $(window).scroll(function() {
+                $('.service-card, .portfolio-item, .package-card, .testimonial-card').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var windowBottom = $(window).scrollTop() + $(window).height();
+                    
+                    if(elementTop < windowBottom - 100) {
+                        $(this).addClass('animated fadeInUp');
+                    }
+                });
+            });
+
+            // Package card animation
+            $('.package-card').hover(
+                function() {
+                    $(this).css('transform', 'translateY(-10px)');
+                },
+                function() {
+                    $(this).css('transform', 'translateY(0)');
+                }
+            );
+
+            // Auto-update copyright year
+            var currentYear = new Date().getFullYear();
+            $('footer p:last').html('&copy; ' + currentYear + ' Moments Studio. All Rights Reserved.');
+
+            // Set min date for wedding date picker to today
+            var today = new Date().toISOString().split('T')[0];
+            $('#weddingDate').attr('min', today);
+
+            // Phone number validation
+            $('#phone').on('input', function() {
+                this.value = this.value.replace(/[^0-9+]/g, '');
+            });
+
+            // Service selection handler
+            $('#service').change(function() {
+                var service = $(this).val();
+                if(service === 'photography') {
+                    $('#package option[value="basic"]').text('Basic Photography - ₹50,000');
+                    $('#package option[value="premium"]').text('Premium Photography - ₹80,000');
+                } else if(service === 'videography') {
+                    $('#package option[value="basic"]').text('Basic Videography - ₹60,000');
+                    $('#package option[value="premium"]').text('Premium Videography - ₹90,000');
+                } else if(service === 'both') {
+                    $('#package option[value="basic"]').text('Basic Package - ₹50,000');
+                    $('#package option[value="premium"]').text('Premium Package - ₹1,20,000');
+                    $('#package option[value="luxury"]').text('Luxury Package - ₹2,50,000');
+                }
+            });
+
+            // Add fade-in animation on page load
+            $('.hero-section h1, .hero-section p').hide().fadeIn(1500);
+
+            // Gallery Filter
+            $('.filter-btn').click(function() {
+                $('.filter-btn').removeClass('active');
+                $(this).addClass('active');
+                
+                var filter = $(this).data('filter');
+                
+                if(filter === 'all') {
+                    $('.gallery-item').fadeIn(400);
+                } else {
+                    $('.gallery-item').fadeOut(400);
+                    $('.gallery-item[data-category="' + filter + '"]').fadeIn(400);
+                }
+            });
+
+            // Gallery Lightbox
+            var currentImageIndex = 0;
+            var galleryImages = [];
+
+            $('.gallery-item img').each(function(index) {
+                galleryImages.push($(this).attr('src'));
+            });
+
+            $('.gallery-item').click(function() {
+                currentImageIndex = $(this).index();
+                openLightbox(galleryImages[currentImageIndex]);
+            });
+
+            // Video Thumbnail Click
+            $('.video-thumbnail').click(function() {
+                var videoUrl = $(this).data('video');
+                $('#modalVideo').attr('src', videoUrl + '?autoplay=1');
+                $('#videoModal').modal('show');
+            });
+
+            // Stop video when modal closes
+            $('#videoModal').on('hidden.bs.modal', function () {
+                $('#modalVideo').attr('src', '');
+            });
+
+            // Smooth scroll for internal links
+            $('a[href^="#"]').on('click', function(e) {
+                var target = $(this.getAttribute('href'));
+                if(target.length) {
+                    e.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 70
+                    }, 1000);
+                }
+            });
+        });
+
+        // Lightbox Functions
+        function openLightbox(imgSrc) {
+            $('#lightbox-img').attr('src', imgSrc);
+            $('#lightbox').addClass('active');
+            $('body').css('overflow', 'hidden');
+        }
+
+        function closeLightbox() {
+            $('#lightbox').removeClass('active');
+            $('body').css('overflow', 'auto');
+        }
+
+        function changeImage(direction) {
+            var galleryImages = [];
+            $('.gallery-item:visible img').each(function() {
+                galleryImages.push($(this).attr('src'));
+            });
+
+            currentImageIndex += direction;
+
+            if(currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
+            }
+            if(currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            }
+
+            $('#lightbox-img').fadeOut(200, function() {
+                $(this).attr('src', galleryImages[currentImageIndex]).fadeIn(200);
+            });
+        }
+
+        // Close lightbox on escape key
+        $(document).keyup(function(e) {
+            if(e.key === "Escape") {
+                closeLightbox();
+            }
+            if(e.key === "ArrowRight") {
+                changeImage(1);
+            }
+            if(e.key === "ArrowLeft") {
+                changeImage(-1);
+            }
+        });
+
+        // Book package function
+        function bookPackage(packageName) {
+            $('html, body').animate({
+                scrollTop: $('#contact').offset().top - 70
+            }, 1000);
+            
+            setTimeout(function() {
+                $('#package').val(packageName.toLowerCase()).focus();
+                $('#package').css('border', '2px solid #d4af37');
+                setTimeout(function() {
+                    $('#package').css('border', '1px solid #ced4da');
+                }, 2000);
+            }, 1100);
+        }
+
+        // Add CSS animation classes
+        $('<style>')
+            .prop('type', 'text/css')
+            .html(`
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .animated {
+                    animation-duration: 0.8s;
+                    animation-fill-mode: both;
+                }
+                
+                .fadeInUp {
+                    animation-name: fadeInUp;
+                }
+
+                .portfolio-item img {
+                    filter: brightness(1);
+                    transition: all 0.3s ease;
+                }
+
+                .portfolio-item:hover img {
+                    filter: brightness(0.7);
+                }
+
+                @media (max-width: 768px) {
+                    .hero-section {
+                        padding: 100px 0;
+                    }
+                    .section-title h2 {
+                        font-size: 2rem;
+                    }
+                    .package-price {
+                        font-size: 2rem;
+                    }
+                }
+            `)
+            .appendTo('head');
+    </script>
+</body>
+</html>

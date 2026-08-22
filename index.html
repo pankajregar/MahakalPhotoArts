@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <meta name="theme-color" content="#080a0d">
 
@@ -28,28 +29,38 @@
 
     <style>
 
-        /* =========================================
+        /* =====================================================
            GLOBAL
-        ========================================= */
+        ===================================================== */
 
         * {
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html,
         body {
             margin: 0;
             padding: 0;
-
-            background: #080a0d;
+            width: 100%;
+            min-height: 100%;
+            background: #030405;
             color: #ffffff;
-
             font-family: 'Poppins', sans-serif;
+        }
 
+        body {
             overflow-x: hidden;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
         }
 
         a {
@@ -57,97 +68,85 @@
             color: inherit;
         }
 
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
 
-        ::-webkit-scrollbar-track {
-            background: #080a0d;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #3a3a3a;
-            border-radius: 10px;
-        }
-
-
-        /* =========================================
-           APP CONTAINER
-        ========================================= */
+        /* =====================================================
+           APP
+        ===================================================== */
 
         .app {
             width: 100%;
             max-width: 600px;
             min-height: 100vh;
-
             margin: auto;
 
             background:
                 radial-gradient(
-                    circle at top right,
+                    circle at 80% 0%,
                     rgba(212, 166, 35, 0.08),
-                    transparent 35%
+                    transparent 30%
                 ),
                 #080a0d;
 
             position: relative;
 
-            padding-bottom: 90px;
+            padding-bottom: 92px;
         }
 
 
-        /* =========================================
-           TOP HEADER
-        ========================================= */
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         .top-header {
+
             height: 78px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            padding: 0 20px;
+            padding: 0 18px;
 
             position: sticky;
             top: 0;
-            z-index: 100;
 
-            background: rgba(8, 10, 13, 0.92);
+            z-index: 500;
 
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(8, 10, 13, 0.94);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
         }
 
 
         .header-btn {
+
             width: 42px;
             height: 42px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
             border: 0;
+            border-radius: 12px;
+
             background: transparent;
 
             color: #ffffff;
 
-            font-size: 20px;
+            font-size: 19px;
 
-            border-radius: 12px;
-
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
 
         .header-btn:active {
             background: rgba(255,255,255,0.08);
         }
 
 
-        /* =========================================
+        /* =====================================================
            LOGO
-        ========================================= */
+        ===================================================== */
 
         .logo {
             text-align: center;
@@ -155,60 +154,98 @@
         }
 
         .logo-title {
+
             font-family: 'Playfair Display', serif;
 
             font-size: 25px;
-            font-weight: 600;
 
             letter-spacing: 1px;
+
+            font-weight: 600;
         }
 
         .logo-subtitle {
-            margin-top: 5px;
+
+            margin-top: 6px;
 
             color: #d7a91b;
 
-            font-size: 10px;
-            font-weight: 500;
+            font-size: 9px;
 
             letter-spacing: 5px;
         }
 
 
-        .notification {
-            position: relative;
-        }
+        /* =====================================================
+           SCREENS
+        ===================================================== */
 
-        .notification-dot {
-            position: absolute;
+        .screen {
 
-            width: 7px;
-            height: 7px;
+            display: none;
 
-            top: 8px;
-            right: 7px;
-
-            border-radius: 50%;
-
-            background: #d7a91b;
-        }
-
-
-        /* =========================================
-           CONTENT
-        ========================================= */
-
-        .content {
             padding: 0 18px;
+
+            animation: screenIn 0.22s ease;
         }
 
 
-        /* =========================================
-           HERO
-        ========================================= */
+        .screen.active {
+            display: block;
+        }
+
+
+        @keyframes screenIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =====================================================
+           COMMON
+        ===================================================== */
+
+        .page-title {
+
+            font-size: 27px;
+
+            font-weight: 400;
+
+            margin: 20px 0 4px;
+        }
+
+
+        .page-subtitle {
+
+            color: #888;
+
+            font-size: 12px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .gold {
+            color: #d7a91b;
+        }
+
+
+        /* =====================================================
+           HOME HERO
+        ===================================================== */
 
         .hero {
-            height: 405px;
+
+            height: 400px;
 
             border-radius: 22px;
 
@@ -217,79 +254,86 @@
             position: relative;
 
             background-image:
+
                 linear-gradient(
                     90deg,
-                    rgba(0,0,0,0.85) 0%,
-                    rgba(0,0,0,0.55) 42%,
-                    rgba(0,0,0,0.10) 100%
+                    rgba(0,0,0,0.88) 0%,
+                    rgba(0,0,0,0.58) 45%,
+                    rgba(0,0,0,0.08) 100%
                 ),
+
                 url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85');
 
             background-size: cover;
+
             background-position: center;
         }
 
 
         .hero-content {
+
             position: absolute;
 
-            left: 30px;
-            top: 65px;
+            left: 28px;
+            top: 58px;
 
-            max-width: 260px;
+            max-width: 270px;
         }
 
 
         .hero-title {
-            font-family: 'Poppins', sans-serif;
 
-            font-size: 36px;
+            font-size: 35px;
+
             font-weight: 400;
 
             line-height: 1.25;
 
             letter-spacing: 1px;
-
-            margin: 0;
         }
 
 
         .gold-line {
+
             width: 55px;
+
             height: 2px;
 
             background: #d7a91b;
 
-            margin: 25px 0;
+            margin: 23px 0;
         }
 
 
         .hero-description {
+
             color: #eeeeee;
 
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 13px;
 
-            font-weight: 300;
+            line-height: 1.7;
         }
 
 
-        /* Slider dots */
+        .hero-dots {
 
-        .slider-dots {
             position: absolute;
 
-            bottom: 25px;
+            bottom: 24px;
+
             left: 0;
             right: 0;
 
             display: flex;
+
             justify-content: center;
 
-            gap: 12px;
+            gap: 10px;
         }
 
-        .slider-dot {
+
+        .hero-dot {
+
             width: 8px;
             height: 8px;
 
@@ -298,45 +342,50 @@
             background: #777;
         }
 
-        .slider-dot.active {
+
+        .hero-dot.active {
             background: #ffffff;
         }
 
-        .slider-dot.gold {
+
+        .hero-dot.gold {
             background: #d7a91b;
         }
 
 
-        /* =========================================
+        /* =====================================================
            QUICK MENU
-        ========================================= */
+        ===================================================== */
 
         .quick-menu {
-            margin-top: 20px;
+
+            margin-top: 18px;
 
             display: grid;
 
             grid-template-columns: repeat(4, 1fr);
 
-            gap: 12px;
+            gap: 10px;
         }
 
 
         .quick-item {
-            min-height: 105px;
 
-            border-radius: 17px;
+            min-height: 98px;
+
+            border-radius: 16px;
 
             background:
                 linear-gradient(
                     145deg,
-                    #181b20,
+                    #191c21,
                     #111419
                 );
 
             border: 1px solid rgba(255,255,255,0.05);
 
             display: flex;
+
             flex-direction: column;
 
             align-items: center;
@@ -344,80 +393,90 @@
 
             text-align: center;
 
-            transition: transform 0.2s;
+            transition: transform .15s;
         }
 
+
         .quick-item:active {
-            transform: scale(0.96);
+            transform: scale(.95);
         }
 
 
         .quick-icon {
-            font-size: 27px;
 
             color: #d7a91b;
 
-            margin-bottom: 12px;
+            font-size: 24px;
+
+            margin-bottom: 10px;
         }
 
 
         .quick-title {
-            font-size: 11px;
 
-            color: #eeeeee;
+            font-size: 10px;
+
+            color: #ddd;
 
             white-space: nowrap;
         }
 
 
-        /* =========================================
+        /* =====================================================
            SECTION HEADER
-        ========================================= */
+        ===================================================== */
 
         .section-header {
+
             display: flex;
 
             align-items: center;
+
             justify-content: space-between;
 
-            margin-top: 38px;
-            margin-bottom: 18px;
+            margin-top: 35px;
+
+            margin-bottom: 15px;
         }
 
 
         .section-title {
-            font-size: 22px;
-
-            font-weight: 400;
 
             margin: 0;
+
+            font-size: 21px;
+
+            font-weight: 400;
         }
 
 
         .view-all {
+
             color: #d7a91b;
 
-            font-size: 13px;
+            font-size: 12px;
         }
 
 
-        /* =========================================
+        /* =====================================================
            HORIZONTAL GALLERY
-        ========================================= */
+        ===================================================== */
 
         .gallery-scroll {
+
             display: flex;
 
-            gap: 14px;
+            gap: 12px;
 
             overflow-x: auto;
 
-            margin-right: -18px;
-
-            padding-right: 18px;
-
             scrollbar-width: none;
+
+            padding-bottom: 5px;
+
+            margin-right: -18px;
         }
+
 
         .gallery-scroll::-webkit-scrollbar {
             display: none;
@@ -425,89 +484,120 @@
 
 
         .gallery-item {
-            flex: 0 0 175px;
+
+            flex: 0 0 160px;
+
+            position: relative;
         }
 
 
         .gallery-image {
-            width: 175px;
-            height: 220px;
+
+            width: 160px;
+            height: 195px;
 
             object-fit: cover;
 
-            border-radius: 17px;
+            border-radius: 16px;
 
             display: block;
         }
 
 
+        .favorite-btn {
+
+            position: absolute;
+
+            right: 8px;
+            top: 8px;
+
+            width: 34px;
+            height: 34px;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            background: rgba(0,0,0,.55);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .favorite-btn.active {
+            color: #d7a91b;
+        }
+
+
         .gallery-info {
+
+            margin-top: 7px;
+
             display: flex;
 
             align-items: center;
 
             gap: 7px;
 
-            margin-top: 10px;
+            color: #999;
 
-            color: #aaaaaa;
-
-            font-size: 13px;
+            font-size: 11px;
         }
 
 
-        .gallery-info i {
-            font-size: 18px;
-        }
-
-
-        /* =========================================
+        /* =====================================================
            STUDIO CARD
-        ========================================= */
+        ===================================================== */
 
         .studio-card {
-            margin-top: 35px;
 
-            min-height: 125px;
+            margin-top: 30px;
 
-            padding: 22px;
+            padding: 20px;
 
-            border-radius: 20px;
+            border-radius: 19px;
 
             background:
                 linear-gradient(
                     145deg,
-                    #181b20,
+                    #191c21,
                     #111419
                 );
 
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,.05);
 
             display: flex;
 
             align-items: center;
 
-            gap: 18px;
+            gap: 15px;
         }
 
 
         .award-icon {
-            width: 62px;
-            height: 62px;
+
+            width: 56px;
+            height: 56px;
 
             flex-shrink: 0;
 
             border-radius: 50%;
 
-            background: #1d2026;
+            background: #20232a;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             color: #d7a91b;
 
-            font-size: 30px;
+            font-size: 25px;
         }
 
 
@@ -517,18 +607,18 @@
 
 
         .studio-title {
-            font-size: 17px;
 
-            font-weight: 500;
+            font-size: 15px;
 
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
 
         .studio-description {
-            color: #999;
 
-            font-size: 11px;
+            color: #888;
+
+            font-size: 10px;
 
             line-height: 1.5;
 
@@ -537,9 +627,10 @@
 
 
         .studio-number {
+
             color: #d7a91b;
 
-            font-size: 28px;
+            font-size: 25px;
 
             font-weight: 500;
 
@@ -548,19 +639,358 @@
 
 
         .studio-label {
-            font-size: 10px;
 
-            color: #aaa;
+            color: #888;
+
+            font-size: 9px;
 
             white-space: nowrap;
         }
 
 
-        /* =========================================
-           BOTTOM NAVIGATION
-        ========================================= */
+        /* =====================================================
+           GALLERY SCREEN
+        ===================================================== */
+
+        .gallery-tabs {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-bottom: 18px;
+
+            overflow-x: auto;
+
+            scrollbar-width: none;
+        }
+
+
+        .gallery-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .gallery-tab {
+
+            flex-shrink: 0;
+
+            border: 1px solid #292c31;
+
+            background: #111419;
+
+            color: #aaa;
+
+            border-radius: 20px;
+
+            padding: 8px 15px;
+
+            font-size: 11px;
+        }
+
+
+        .gallery-tab.active {
+
+            background: #d7a91b;
+
+            border-color: #d7a91b;
+
+            color: #111;
+        }
+
+
+        .gallery-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 10px;
+        }
+
+
+        .grid-photo {
+
+            position: relative;
+        }
+
+
+        .grid-photo img {
+
+            width: 100%;
+
+            height: 210px;
+
+            object-fit: cover;
+
+            border-radius: 14px;
+
+            display: block;
+        }
+
+
+        .grid-photo .favorite-btn {
+
+            width: 32px;
+            height: 32px;
+        }
+
+
+        /* =====================================================
+           BOOKING
+        ===================================================== */
+
+        .booking-card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #191c21,
+                    #111419
+                );
+
+            border: 1px solid rgba(255,255,255,.05);
+
+            border-radius: 19px;
+
+            padding: 20px;
+        }
+
+
+        .form-label {
+
+            color: #aaa;
+
+            font-size: 11px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .form-control,
+        .form-select {
+
+            background: #0d0f12 !important;
+
+            border: 1px solid #292c31 !important;
+
+            color: #fff !important;
+
+            border-radius: 11px;
+
+            font-size: 12px;
+
+            padding: 11px 12px;
+        }
+
+
+        .form-control:focus,
+        .form-select:focus {
+
+            border-color: #d7a91b !important;
+
+            box-shadow: none !important;
+        }
+
+
+        .form-control::placeholder {
+            color: #666;
+        }
+
+
+        .btn-gold {
+
+            width: 100%;
+
+            background: #d7a91b;
+
+            border: 0;
+
+            color: #111;
+
+            border-radius: 11px;
+
+            padding: 12px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        .btn-gold:active {
+            transform: scale(.98);
+        }
+
+
+        /* =====================================================
+           FAVORITES
+        ===================================================== */
+
+        .empty-state {
+
+            min-height: 350px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: #777;
+        }
+
+
+        .empty-icon {
+
+            width: 70px;
+            height: 70px;
+
+            border-radius: 50%;
+
+            background: #15181c;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 28px;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =====================================================
+           PROFILE
+        ===================================================== */
+
+        .profile-card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #191c21,
+                    #111419
+                );
+
+            border-radius: 20px;
+
+            padding: 25px 20px;
+
+            text-align: center;
+        }
+
+
+        .profile-avatar {
+
+            width: 90px;
+            height: 90px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border: 2px solid #d7a91b;
+
+            margin-bottom: 15px;
+        }
+
+
+        .profile-name {
+
+            font-size: 19px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .profile-role {
+
+            color: #d7a91b;
+
+            font-size: 11px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .profile-stat {
+
+            background: #0d0f12;
+
+            border-radius: 12px;
+
+            padding: 12px;
+        }
+
+
+        .profile-stat-number {
+
+            color: #d7a91b;
+
+            font-size: 20px;
+        }
+
+
+        .profile-stat-label {
+
+            color: #777;
+
+            font-size: 9px;
+        }
+
+
+        .profile-menu {
+
+            margin-top: 15px;
+        }
+
+
+        .profile-menu-item {
+
+            width: 100%;
+
+            border: 0;
+
+            border-bottom: 1px solid #202328;
+
+            background: transparent;
+
+            color: #ddd;
+
+            padding: 15px 4px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            text-align: left;
+
+            font-size: 12px;
+        }
+
+
+        .profile-menu-item i {
+
+            width: 22px;
+
+            color: #d7a91b;
+        }
+
+
+        /* =====================================================
+           BOTTOM NAV
+        ===================================================== */
 
         .bottom-nav {
+
             position: fixed;
 
             bottom: 12px;
@@ -573,47 +1003,48 @@
 
             max-width: 576px;
 
-            height: 70px;
+            height: 68px;
+
+            background: rgba(24,27,32,.97);
+
+            border: 1px solid rgba(255,255,255,.06);
 
             border-radius: 20px;
 
-            background: rgba(24, 27, 32, 0.96);
-
-            border: 1px solid rgba(255,255,255,0.06);
-
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
 
             display: grid;
 
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(5,1fr);
 
-            align-items: center;
-
-            z-index: 999;
+            z-index: 900;
         }
 
 
         .nav-item {
-            height: 100%;
+
+            border: 0;
+
+            background: transparent;
+
+            color: #777;
 
             display: flex;
 
             flex-direction: column;
 
             align-items: center;
+
             justify-content: center;
 
-            color: #999;
+            gap: 5px;
 
-            font-size: 10px;
-
-            gap: 6px;
+            font-size: 9px;
         }
 
 
         .nav-item i {
-            font-size: 19px;
+            font-size: 18px;
         }
 
 
@@ -622,9 +1053,332 @@
         }
 
 
-        /* =========================================
+        /* =====================================================
+           SIDE MENU
+        ===================================================== */
+
+        .menu-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,.65);
+
+            z-index: 1000;
+
+            display: none;
+        }
+
+
+        .menu-overlay.show {
+            display: block;
+        }
+
+
+        .side-menu {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 285px;
+
+            max-width: 85%;
+
+            height: 100vh;
+
+            background: #101216;
+
+            z-index: 1100;
+
+            transform: translateX(-100%);
+
+            transition: transform .25s ease;
+
+            padding: 25px 20px;
+        }
+
+
+        .side-menu.show {
+            transform: translateX(0);
+        }
+
+
+        .menu-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 30px;
+        }
+
+
+        .menu-logo {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 23px;
+        }
+
+
+        .menu-close {
+
+            width: 38px;
+            height: 38px;
+
+            border: 0;
+
+            border-radius: 10px;
+
+            background: #1a1d22;
+
+            color: #fff;
+        }
+
+
+        .menu-item {
+
+            width: 100%;
+
+            border: 0;
+
+            background: transparent;
+
+            color: #ccc;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 14px 5px;
+
+            font-size: 12px;
+
+            text-align: left;
+
+            border-bottom: 1px solid #202329;
+        }
+
+
+        .menu-item i {
+
+            width: 22px;
+
+            color: #d7a91b;
+
+            font-size: 16px;
+        }
+
+
+        /* =====================================================
+           NOTIFICATION PANEL
+        ===================================================== */
+
+        .notification-panel {
+
+            position: fixed;
+
+            top: 0;
+            right: 0;
+
+            width: 330px;
+
+            max-width: 90%;
+
+            height: 100vh;
+
+            background: #101216;
+
+            z-index: 1100;
+
+            transform: translateX(100%);
+
+            transition: transform .25s ease;
+
+            padding: 22px 18px;
+        }
+
+
+        .notification-panel.show {
+            transform: translateX(0);
+        }
+
+
+        .notification-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+        }
+
+
+        .notification-title {
+
+            font-size: 19px;
+
+            font-weight: 400;
+        }
+
+
+        .notification-item {
+
+            padding: 15px 0;
+
+            display: flex;
+
+            gap: 12px;
+
+            border-bottom: 1px solid #202329;
+        }
+
+
+        .notification-icon {
+
+            width: 38px;
+            height: 38px;
+
+            flex-shrink: 0;
+
+            border-radius: 11px;
+
+            background: #1c1f24;
+
+            color: #d7a91b;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .notification-text {
+
+            font-size: 11px;
+
+            color: #ccc;
+
+            line-height: 1.5;
+        }
+
+
+        .notification-time {
+
+            color: #666;
+
+            font-size: 9px;
+
+            margin-top: 4px;
+        }
+
+
+        /* =====================================================
+           TOAST
+        ===================================================== */
+
+        .app-toast {
+
+            position: fixed;
+
+            left: 50%;
+
+            bottom: 92px;
+
+            transform: translate(-50%, 20px);
+
+            background: #202328;
+
+            color: #fff;
+
+            padding: 11px 17px;
+
+            border-radius: 12px;
+
+            font-size: 11px;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            z-index: 1500;
+
+            transition: .25s;
+        }
+
+
+        .app-toast.show {
+
+            opacity: 1;
+
+            transform: translate(-50%,0);
+        }
+
+
+        /* =====================================================
+           SMALL PHONES
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .screen {
+                padding: 0 14px;
+            }
+
+            .hero {
+                height: 370px;
+            }
+
+            .hero-content {
+                left: 23px;
+                top: 48px;
+            }
+
+            .hero-title {
+                font-size: 31px;
+            }
+
+            .quick-menu {
+                gap: 7px;
+            }
+
+            .quick-item {
+                min-height: 90px;
+            }
+
+            .quick-icon {
+                font-size: 21px;
+            }
+
+            .quick-title {
+                font-size: 8px;
+            }
+
+            .gallery-item {
+                flex-basis: 150px;
+            }
+
+            .gallery-image {
+                width: 150px;
+                height: 185px;
+            }
+
+        }
+
+
+        /* =====================================================
            DESKTOP
-        ========================================= */
+        ===================================================== */
 
         @media (min-width: 601px) {
 
@@ -634,80 +1388,7 @@
 
             .app {
                 box-shadow:
-                    0 0 60px rgba(0,0,0,0.6);
-            }
-
-        }
-
-
-        /* =========================================
-           SMALL MOBILE
-        ========================================= */
-
-        @media (max-width: 380px) {
-
-            .content {
-                padding: 0 14px;
-            }
-
-            .hero {
-                height: 370px;
-                border-radius: 18px;
-            }
-
-            .hero-content {
-                left: 24px;
-                top: 50px;
-            }
-
-            .hero-title {
-                font-size: 31px;
-            }
-
-            .quick-menu {
-                gap: 8px;
-            }
-
-            .quick-item {
-                min-height: 95px;
-                border-radius: 14px;
-            }
-
-            .quick-icon {
-                font-size: 23px;
-                margin-bottom: 8px;
-            }
-
-            .quick-title {
-                font-size: 9px;
-            }
-
-            .gallery-item,
-            .gallery-image {
-                width: 155px;
-            }
-
-            .gallery-image {
-                height: 195px;
-            }
-
-            .studio-card {
-                padding: 17px;
-                gap: 12px;
-            }
-
-            .award-icon {
-                width: 52px;
-                height: 52px;
-                font-size: 24px;
-            }
-
-            .studio-title {
-                font-size: 14px;
-            }
-
-            .studio-number {
-                font-size: 23px;
+                    0 0 80px rgba(0,0,0,.65);
             }
 
         }
@@ -723,15 +1404,14 @@
 <div class="app">
 
 
-    <!-- =========================================
+    <!-- =====================================================
          HEADER
-    ========================================== -->
+    ====================================================== -->
 
     <header class="top-header">
 
         <button class="header-btn"
-                onclick="toggleMenu()"
-                aria-label="Menu">
+                onclick="openMenu()">
 
             <i class="fa-solid fa-bars"></i>
 
@@ -751,12 +1431,10 @@
         </div>
 
 
-        <button class="header-btn notification"
-                aria-label="Notifications">
+        <button class="header-btn"
+                onclick="openNotifications()">
 
             <i class="fa-regular fa-bell"></i>
-
-            <span class="notification-dot"></span>
 
         </button>
 
@@ -764,57 +1442,61 @@
 
 
 
-    <!-- =========================================
-         CONTENT
-    ========================================== -->
+    <!-- =====================================================
+         HOME
+    ====================================================== -->
 
-    <main class="content">
+    <section id="screen-home"
+             class="screen active">
 
 
-        <!-- HERO -->
-
-        <section class="hero">
+        <div class="hero">
 
             <div class="hero-content">
 
                 <h1 class="hero-title">
+
                     CAPTURING
                     <br>
                     BEAUTIFUL
                     <br>
                     MOMENTS
+
                 </h1>
+
 
                 <div class="gold-line"></div>
 
+
                 <p class="hero-description">
+
                     We turn your moments
                     into timeless memories.
+
                 </p>
 
             </div>
 
 
-            <div class="slider-dots">
+            <div class="hero-dots">
 
-                <span class="slider-dot active"></span>
-
-                <span class="slider-dot gold"></span>
-
-                <span class="slider-dot"></span>
+                <span class="hero-dot active"></span>
+                <span class="hero-dot gold"></span>
+                <span class="hero-dot"></span>
 
             </div>
 
-        </section>
+        </div>
 
 
 
-        <!-- QUICK MENU -->
+        <!-- QUICK ACTIONS -->
 
-        <section class="quick-menu">
+        <div class="quick-menu">
 
 
-            <a href="#photography" class="quick-item">
+            <button class="quick-item"
+                    onclick="showScreen('gallery')">
 
                 <i class="fa-solid fa-camera quick-icon"></i>
 
@@ -822,10 +1504,11 @@
                     Photography
                 </span>
 
-            </a>
+            </button>
 
 
-            <a href="#videography" class="quick-item">
+            <button class="quick-item"
+                    onclick="showScreen('gallery')">
 
                 <i class="fa-solid fa-video quick-icon"></i>
 
@@ -833,10 +1516,11 @@
                     Videography
                 </span>
 
-            </a>
+            </button>
 
 
-            <a href="#prewedding" class="quick-item">
+            <button class="quick-item"
+                    onclick="showScreen('gallery')">
 
                 <i class="fa-regular fa-heart quick-icon"></i>
 
@@ -844,10 +1528,11 @@
                     Pre-Wedding
                 </span>
 
-            </a>
+            </button>
 
 
-            <a href="#events" class="quick-item">
+            <button class="quick-item"
+                    onclick="showScreen('bookings')">
 
                 <i class="fa-regular fa-calendar-days quick-icon"></i>
 
@@ -855,10 +1540,11 @@
                     Events
                 </span>
 
-            </a>
+            </button>
 
 
-            <a href="#gallery" class="quick-item">
+            <button class="quick-item"
+                    onclick="showScreen('gallery')">
 
                 <i class="fa-regular fa-images quick-icon"></i>
 
@@ -866,10 +1552,11 @@
                     Gallery
                 </span>
 
-            </a>
+            </button>
 
 
-            <a href="#packages" class="quick-item">
+            <button class="quick-item"
+                    onclick="showScreen('bookings')">
 
                 <i class="fa-solid fa-tag quick-icon"></i>
 
@@ -877,10 +1564,11 @@
                     Packages
                 </span>
 
-            </a>
+            </button>
 
 
-            <a href="#clients" class="quick-item">
+            <button class="quick-item"
+                    onclick="showScreen('profile')">
 
                 <i class="fa-solid fa-user-group quick-icon"></i>
 
@@ -888,10 +1576,11 @@
                     Clients
                 </span>
 
-            </a>
+            </button>
 
 
-            <a href="#contact" class="quick-item">
+            <button class="quick-item"
+                    onclick="showScreen('bookings')">
 
                 <i class="fa-regular fa-comment-dots quick-icon"></i>
 
@@ -899,14 +1588,14 @@
                     Contact
                 </span>
 
-            </a>
+            </button>
 
 
-        </section>
+        </div>
 
 
 
-        <!-- FEATURED WORK -->
+        <!-- FEATURED -->
 
         <div class="section-header">
 
@@ -914,28 +1603,35 @@
                 Featured Work
             </h2>
 
-            <a href="#gallery" class="view-all">
+            <button class="btn btn-link view-all p-0"
+                    onclick="showScreen('gallery')">
+
                 View All
-            </a>
+
+            </button>
 
         </div>
 
 
-        <section class="gallery-scroll"
-                 id="gallery">
+        <div class="gallery-scroll">
 
 
             <div class="gallery-item">
 
                 <img class="gallery-image"
-                     src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=85"
-                     alt="Wedding photography">
+                     src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=85">
+
+                <button class="favorite-btn"
+                        onclick="toggleFavorite(this,1)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
 
                 <div class="gallery-info">
 
                     <i class="fa-regular fa-heart"></i>
-
-                    <span>128</span>
+                    128
 
                 </div>
 
@@ -945,14 +1641,19 @@
             <div class="gallery-item">
 
                 <img class="gallery-image"
-                     src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=85"
-                     alt="Bride photography">
+                     src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=85">
+
+                <button class="favorite-btn"
+                        onclick="toggleFavorite(this,2)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
 
                 <div class="gallery-info">
 
                     <i class="fa-regular fa-heart"></i>
-
-                    <span>96</span>
+                    96
 
                 </div>
 
@@ -962,45 +1663,32 @@
             <div class="gallery-item">
 
                 <img class="gallery-image"
-                     src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=85"
-                     alt="Wedding couple">
+                     src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=85">
+
+                <button class="favorite-btn"
+                        onclick="toggleFavorite(this,3)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
 
                 <div class="gallery-info">
 
                     <i class="fa-regular fa-heart"></i>
-
-                    <span>87</span>
+                    87
 
                 </div>
 
             </div>
 
 
-            <div class="gallery-item">
-
-                <img class="gallery-image"
-                     src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=600&q=85"
-                     alt="Wedding event">
-
-                <div class="gallery-info">
-
-                    <i class="fa-regular fa-heart"></i>
-
-                    <span>73</span>
-
-                </div>
-
-            </div>
-
-
-        </section>
+        </div>
 
 
 
-        <!-- STUDIO CARD -->
+        <!-- STUDIO -->
 
-        <section class="studio-card">
-
+        <div class="studio-card">
 
             <div class="award-icon">
 
@@ -1016,8 +1704,10 @@
                 </div>
 
                 <p class="studio-description">
+
                     Trusted by hundreds of happy
                     clients across the world.
+
                 </p>
 
             </div>
@@ -1035,22 +1725,514 @@
 
             </div>
 
-
-        </section>
-
-
-    </main>
+        </div>
 
 
+    </section>
 
-    <!-- =========================================
+
+
+    <!-- =====================================================
+         GALLERY
+    ====================================================== -->
+
+    <section id="screen-gallery"
+             class="screen">
+
+
+        <h1 class="page-title">
+            Gallery
+        </h1>
+
+        <p class="page-subtitle">
+            Explore our latest work
+        </p>
+
+
+        <div class="gallery-tabs">
+
+            <button class="gallery-tab active">
+                All
+            </button>
+
+            <button class="gallery-tab">
+                Weddings
+            </button>
+
+            <button class="gallery-tab">
+                Pre-Wedding
+            </button>
+
+            <button class="gallery-tab">
+                Events
+            </button>
+
+            <button class="gallery-tab">
+                Videos
+            </button>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+
+            <div class="grid-photo">
+
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=85">
+
+                <button class="favorite-btn"
+                        onclick="toggleFavorite(this,10)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="grid-photo">
+
+                <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=700&q=85">
+
+                <button class="favorite-btn"
+                        onclick="toggleFavorite(this,11)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="grid-photo">
+
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=85">
+
+                <button class="favorite-btn"
+                        onclick="toggleFavorite(this,12)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="grid-photo">
+
+                <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=700&q=85">
+
+                <button class="favorite-btn"
+                        onclick="toggleFavorite(this,13)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="grid-photo">
+
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=700&q=85">
+
+                <button class="favorite-btn"
+                        onclick="toggleFavorite(this,14)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="grid-photo">
+
+                <img src="https://images.unsplash.com/photo-1515864341695-7b5a7b0c2f57?auto=format&fit=crop&w=700&q=85">
+
+                <button class="favorite-btn"
+                        onclick="toggleFavorite(this,15)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         BOOKINGS
+    ====================================================== -->
+
+    <section id="screen-bookings"
+             class="screen">
+
+
+        <h1 class="page-title">
+            Bookings
+        </h1>
+
+        <p class="page-subtitle">
+            Tell us about your special day
+        </p>
+
+
+        <div class="booking-card">
+
+            <form id="bookingForm">
+
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Your Name
+                    </label>
+
+                    <input type="text"
+                           class="form-control"
+                           id="bookingName"
+                           placeholder="Enter your name"
+                           required>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Mobile Number
+                    </label>
+
+                    <input type="tel"
+                           class="form-control"
+                           id="bookingPhone"
+                           placeholder="+91"
+                           required>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Service
+                    </label>
+
+                    <select class="form-select"
+                            id="bookingService">
+
+                        <option>Wedding Photography</option>
+
+                        <option>Wedding Videography</option>
+
+                        <option>Pre-Wedding Shoot</option>
+
+                        <option>Event Photography</option>
+
+                        <option>Photography + Videography</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Event Date
+                    </label>
+
+                    <input type="date"
+                           class="form-control"
+                           id="bookingDate">
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Message
+                    </label>
+
+                    <textarea class="form-control"
+                              id="bookingMessage"
+                              rows="4"
+                              placeholder="Tell us about your event"></textarea>
+
+                </div>
+
+
+                <button type="submit"
+                        class="btn-gold">
+
+                    <i class="fa-regular fa-calendar-check me-2"></i>
+
+                    Send Enquiry
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+        <div class="studio-card mt-3">
+
+            <div class="award-icon">
+
+                <i class="fa-solid fa-phone"></i>
+
+            </div>
+
+            <div class="studio-info">
+
+                <div class="studio-title">
+                    Need quick assistance?
+                </div>
+
+                <p class="studio-description">
+                    Call our studio directly.
+                </p>
+
+            </div>
+
+            <a href="tel:+919876543210"
+               class="gold">
+
+                <i class="fa-solid fa-phone"></i>
+
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FAVORITES
+    ====================================================== -->
+
+    <section id="screen-favorites"
+             class="screen">
+
+
+        <h1 class="page-title">
+            Favorites
+        </h1>
+
+        <p class="page-subtitle">
+            Photos you've saved
+        </p>
+
+
+        <div id="favoritesContainer">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </div>
+
+                <div>
+                    No favorites yet
+                </div>
+
+                <small>
+                    Tap the heart on any photo
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROFILE
+    ====================================================== -->
+
+    <section id="screen-profile"
+             class="screen">
+
+
+        <h1 class="page-title">
+            Profile
+        </h1>
+
+        <p class="page-subtitle">
+            Mahakal Photo Arts
+        </p>
+
+
+        <div class="profile-card">
+
+
+            <img class="profile-avatar"
+                 src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=300&q=80">
+
+
+            <div class="profile-name">
+                Mahakal Photo Arts
+            </div>
+
+
+            <div class="profile-role">
+                WEDDING PHOTOGRAPHY & VIDEOGRAPHY
+            </div>
+
+
+            <div class="row g-2">
+
+
+                <div class="col-4">
+
+                    <div class="profile-stat">
+
+                        <div class="profile-stat-number">
+                            500+
+                        </div>
+
+                        <div class="profile-stat-label">
+                            Clients
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-4">
+
+                    <div class="profile-stat">
+
+                        <div class="profile-stat-number">
+                            10+
+                        </div>
+
+                        <div class="profile-stat-label">
+                            Years
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-4">
+
+                    <div class="profile-stat">
+
+                        <div class="profile-stat-number">
+                            1000+
+                        </div>
+
+                        <div class="profile-stat-label">
+                            Events
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="profile-menu">
+
+
+            <button class="profile-menu-item"
+                    onclick="showToast('About studio')">
+
+                <i class="fa-regular fa-building"></i>
+
+                About Studio
+
+                <span class="ms-auto">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </button>
+
+
+            <button class="profile-menu-item"
+                    onclick="showToast('Packages')">
+
+                <i class="fa-solid fa-tag"></i>
+
+                Packages
+
+                <span class="ms-auto">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </button>
+
+
+            <button class="profile-menu-item"
+                    onclick="showToast('Terms and privacy')">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Privacy & Terms
+
+                <span class="ms-auto">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </button>
+
+
+            <button class="profile-menu-item"
+                    onclick="showToast('Contact studio')">
+
+                <i class="fa-regular fa-message"></i>
+
+                Contact Studio
+
+                <span class="ms-auto">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
          BOTTOM NAVIGATION
-    ========================================== -->
+    ====================================================== -->
 
     <nav class="bottom-nav">
 
 
-        <a href="#" class="nav-item active">
+        <button class="nav-item active"
+                data-screen="home"
+                onclick="showScreen('home')">
 
             <i class="fa-solid fa-house"></i>
 
@@ -1058,10 +2240,12 @@
                 Home
             </span>
 
-        </a>
+        </button>
 
 
-        <a href="#gallery" class="nav-item">
+        <button class="nav-item"
+                data-screen="gallery"
+                onclick="showScreen('gallery')">
 
             <i class="fa-regular fa-images"></i>
 
@@ -1069,10 +2253,12 @@
                 Gallery
             </span>
 
-        </a>
+        </button>
 
 
-        <a href="#bookings" class="nav-item">
+        <button class="nav-item"
+                data-screen="bookings"
+                onclick="showScreen('bookings')">
 
             <i class="fa-regular fa-calendar"></i>
 
@@ -1080,10 +2266,12 @@
                 Bookings
             </span>
 
-        </a>
+        </button>
 
 
-        <a href="#favorites" class="nav-item">
+        <button class="nav-item"
+                data-screen="favorites"
+                onclick="showScreen('favorites')">
 
             <i class="fa-regular fa-heart"></i>
 
@@ -1091,10 +2279,12 @@
                 Favorites
             </span>
 
-        </a>
+        </button>
 
 
-        <a href="#profile" class="nav-item">
+        <button class="nav-item"
+                data-screen="profile"
+                onclick="showScreen('profile')">
 
             <i class="fa-regular fa-user"></i>
 
@@ -1102,7 +2292,7 @@
                 Profile
             </span>
 
-        </a>
+        </button>
 
 
     </nav>
@@ -1112,47 +2302,678 @@
 
 
 
-<!-- =========================================
-     JAVASCRIPT
-========================================== -->
+<!-- =========================================================
+     MENU OVERLAY
+========================================================= -->
+
+<div class="menu-overlay"
+     id="menuOverlay"
+     onclick="closeMenu()">
+</div>
+
+
+<!-- =========================================================
+     SIDE MENU
+========================================================= -->
+
+<aside class="side-menu"
+       id="sideMenu">
+
+
+    <div class="menu-header">
+
+        <div>
+
+            <div class="menu-logo">
+                Mahakal
+            </div>
+
+            <div class="logo-subtitle">
+                PHOTO ARTS
+            </div>
+
+        </div>
+
+
+        <button class="menu-close"
+                onclick="closeMenu()">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+    <button class="menu-item"
+            onclick="menuNavigate('home')">
+
+        <i class="fa-solid fa-house"></i>
+
+        Home
+
+    </button>
+
+
+    <button class="menu-item"
+            onclick="menuNavigate('gallery')">
+
+        <i class="fa-regular fa-images"></i>
+
+        Gallery
+
+    </button>
+
+
+    <button class="menu-item"
+            onclick="menuNavigate('bookings')">
+
+        <i class="fa-regular fa-calendar-check"></i>
+
+        Book a Session
+
+    </button>
+
+
+    <button class="menu-item"
+            onclick="menuNavigate('favorites')">
+
+        <i class="fa-regular fa-heart"></i>
+
+        My Favorites
+
+    </button>
+
+
+    <button class="menu-item"
+            onclick="menuNavigate('profile')">
+
+        <i class="fa-regular fa-user"></i>
+
+        Profile
+
+    </button>
+
+
+    <button class="menu-item"
+            onclick="showToast('Packages coming soon')">
+
+        <i class="fa-solid fa-tag"></i>
+
+        Packages
+
+    </button>
+
+
+    <button class="menu-item"
+            onclick="showToast('Contact: +91 98765 43210')">
+
+        <i class="fa-solid fa-phone"></i>
+
+        Contact
+
+    </button>
+
+
+</aside>
+
+
+
+<!-- =========================================================
+     NOTIFICATIONS
+========================================================= -->
+
+<aside class="notification-panel"
+       id="notificationPanel">
+
+
+    <div class="notification-header">
+
+        <div class="notification-title">
+            Notifications
+        </div>
+
+
+        <button class="menu-close"
+                onclick="closeNotifications()">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+    <div class="notification-item">
+
+        <div class="notification-icon">
+
+            <i class="fa-solid fa-camera"></i>
+
+        </div>
+
+
+        <div>
+
+            <div class="notification-text">
+
+                New wedding photography packages
+                are now available.
+
+            </div>
+
+            <div class="notification-time">
+                Today
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="notification-item">
+
+        <div class="notification-icon">
+
+            <i class="fa-solid fa-calendar-check"></i>
+
+        </div>
+
+
+        <div>
+
+            <div class="notification-text">
+
+                Book your wedding date early
+                to secure your preferred slot.
+
+            </div>
+
+            <div class="notification-time">
+                Yesterday
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="notification-item">
+
+        <div class="notification-icon">
+
+            <i class="fa-solid fa-star"></i>
+
+        </div>
+
+
+        <div>
+
+            <div class="notification-text">
+
+                Thank you for choosing
+                Mahakal Photo Arts.
+
+            </div>
+
+            <div class="notification-time">
+                3 days ago
+            </div>
+
+        </div>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div class="app-toast"
+     id="appToast">
+</div>
+
+
 
 <script>
 
-    function toggleMenu() {
 
-        alert("Menu will open here.");
+    /* =====================================================
+       SCREEN NAVIGATION
+    ===================================================== */
+
+    function showScreen(screenName) {
+
+        document.querySelectorAll('.screen')
+            .forEach(function(screen) {
+
+                screen.classList.remove('active');
+
+            });
+
+
+        var selectedScreen =
+            document.getElementById(
+                'screen-' + screenName
+            );
+
+
+        if (selectedScreen) {
+
+            selectedScreen.classList.add('active');
+
+        }
+
+
+        document.querySelectorAll('.nav-item')
+            .forEach(function(item) {
+
+                item.classList.remove('active');
+
+            });
+
+
+        var activeNav =
+            document.querySelector(
+                '.nav-item[data-screen="' +
+                screenName +
+                '"]'
+            );
+
+
+        if (activeNav) {
+
+            activeNav.classList.add('active');
+
+        }
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+
+        closeMenu();
+
+
+        closeNotifications();
+
+
+        if (screenName === 'favorites') {
+
+            renderFavorites();
+
+        }
 
     }
 
 
-    /* PWA Service Worker */
 
-    if ("serviceWorker" in navigator) {
+    /* =====================================================
+       SIDE MENU
+    ===================================================== */
 
-        window.addEventListener("load", function () {
+    function openMenu() {
 
-            navigator.serviceWorker
-                .register("./sw.js")
-                .then(function (registration) {
+        document
+            .getElementById('sideMenu')
+            .classList.add('show');
 
-                    console.log(
-                        "Service Worker registered:",
-                        registration.scope
-                    );
+        document
+            .getElementById('menuOverlay')
+            .classList.add('show');
 
-                })
-                .catch(function (error) {
+    }
 
-                    console.error(
-                        "Service Worker registration failed:",
-                        error
-                    );
 
-                });
+    function closeMenu() {
+
+        document
+            .getElementById('sideMenu')
+            .classList.remove('show');
+
+        document
+            .getElementById('menuOverlay')
+            .classList.remove('show');
+
+    }
+
+
+    function menuNavigate(screen) {
+
+        showScreen(screen);
+
+        closeMenu();
+
+    }
+
+
+
+    /* =====================================================
+       NOTIFICATIONS
+    ===================================================== */
+
+    function openNotifications() {
+
+        document
+            .getElementById('notificationPanel')
+            .classList.add('show');
+
+    }
+
+
+    function closeNotifications() {
+
+        document
+            .getElementById('notificationPanel')
+            .classList.remove('show');
+
+    }
+
+
+
+    /* =====================================================
+       FAVORITES
+    ===================================================== */
+
+    function getFavorites() {
+
+        return JSON.parse(
+            localStorage.getItem('mahakalFavorites') || '[]'
+        );
+
+    }
+
+
+    function saveFavorites(favorites) {
+
+        localStorage.setItem(
+            'mahakalFavorites',
+            JSON.stringify(favorites)
+        );
+
+    }
+
+
+    function toggleFavorite(button, id) {
+
+        var favorites = getFavorites();
+
+        var index = favorites.indexOf(id);
+
+
+        if (index === -1) {
+
+            favorites.push(id);
+
+            button.classList.add('active');
+
+            button.innerHTML =
+                '<i class="fa-solid fa-heart"></i>';
+
+            showToast('Added to favorites');
+
+        }
+        else {
+
+            favorites.splice(index, 1);
+
+            button.classList.remove('active');
+
+            button.innerHTML =
+                '<i class="fa-regular fa-heart"></i>';
+
+            showToast('Removed from favorites');
+
+        }
+
+
+        saveFavorites(favorites);
+
+    }
+
+
+    function renderFavorites() {
+
+        var container =
+            document.getElementById(
+                'favoritesContainer'
+            );
+
+
+        var favorites = getFavorites();
+
+
+        if (favorites.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </div>
+
+                    <div>
+                        No favorites yet
+                    </div>
+
+                    <small>
+                        Tap the heart on any photo
+                    </small>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        var images = {
+
+            1:
+                'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=85',
+
+            2:
+                'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=700&q=85',
+
+            3:
+                'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=85',
+
+            10:
+                'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=85',
+
+            11:
+                'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=700&q=85',
+
+            12:
+                'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=85',
+
+            13:
+                'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=700&q=85',
+
+            14:
+                'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=700&q=85',
+
+            15:
+                'https://images.unsplash.com/photo-1515864341695-7b5a7b0c2f57?auto=format&fit=crop&w=700&q=85'
+
+        };
+
+
+        var html = '';
+
+        favorites.forEach(function(id) {
+
+            if (!images[id]) return;
+
+
+            html += `
+
+                <div class="grid-photo">
+
+                    <img src="${images[id]}">
+
+                    <button
+                        class="favorite-btn active"
+                        onclick="removeFavorite(${id})">
+
+                        <i class="fa-solid fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+            `;
 
         });
 
+
+        container.innerHTML = `
+
+            <div class="gallery-grid">
+
+                ${html}
+
+            </div>
+
+        `;
+
     }
+
+
+    function removeFavorite(id) {
+
+        var favorites = getFavorites();
+
+        favorites =
+            favorites.filter(function(item) {
+
+                return item !== id;
+
+            });
+
+
+        saveFavorites(favorites);
+
+        renderFavorites();
+
+        showToast('Removed from favorites');
+
+    }
+
+
+
+    /* =====================================================
+       BOOKING
+    ===================================================== */
+
+    document
+        .getElementById('bookingForm')
+        .addEventListener(
+            'submit',
+            function(event) {
+
+                event.preventDefault();
+
+
+                var name =
+                    document.getElementById(
+                        'bookingName'
+                    ).value;
+
+
+                showToast(
+                    'Thank you ' +
+                    name +
+                    '! Enquiry received.'
+                );
+
+
+                this.reset();
+
+            }
+        );
+
+
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
+    var toastTimer;
+
+
+    function showToast(message) {
+
+        var toast =
+            document.getElementById(
+                'appToast'
+            );
+
+
+        toast.textContent = message;
+
+        toast.classList.add('show');
+
+
+        clearTimeout(toastTimer);
+
+
+        toastTimer =
+            setTimeout(function() {
+
+                toast.classList.remove('show');
+
+            }, 2500);
+
+    }
+
+
+
+    /* =====================================================
+       PWA SERVICE WORKER
+    ===================================================== */
+
+    if ('serviceWorker' in navigator) {
+
+        window.addEventListener(
+            'load',
+            function() {
+
+                navigator.serviceWorker
+                    .register('./sw.js')
+                    .then(function(registration) {
+
+                        console.log(
+                            'Service Worker registered:',
+                            registration.scope
+                        );
+
+                    })
+                    .catch(function(error) {
+
+                        console.error(
+                            'Service Worker error:',
+                            error
+                        );
+
+                    });
+
+            }
+        );
+
+    }
+
 
 </script>
 

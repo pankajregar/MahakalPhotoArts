@@ -1,1808 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mahakal Photo Arts — Award-Winning Wedding Photography & Videography</title>
+    <meta charset="UTF-8">
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="manifest" href="./manifest.json">
-  
-  <meta name="theme-color" content="#0d6efd">
-  
-  <script>
-  if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("./sw.js")
-          .then(function (registration) {
-              console.log("Service Worker registered");
-          })
-          .catch(function (error) {
-              console.error("Service Worker error:", error);
-          });
-  }
-  </script>
-  <style>
-    :root{
-      --primary:#C9A961;
-      --accent:#8B6914;
-      --dark:#1a1a1a;
-      --muted:#6b7280;
-      --bg:#fafaf9;
-      --card:#FFFFFF;
-      --overlay:rgba(26,26,26,0.75);
-    }
+    <!-- Mobile Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'Poppins',sans-serif;
-      color:var(--dark);
-      background:var(--bg);
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-    }
+    <title>Mahakal Photo Arts</title>
 
-    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;font-weight:600;line-height:1.3}
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#0d6efd">
 
-    /* NAVBAR */
-    .navbar{
-      backdrop-filter:blur(12px);
-      background:rgba(255,255,255,0.95);
-      box-shadow:0 2px 20px rgba(0,0,0,0.08);
-      transition:all 0.3s ease;
-      padding:1rem 0;
-    }
-    .navbar.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.12)}
-    
-    .navbar-brand{
-      font-family:'Playfair Display',serif;
-      font-weight:700;
-      color:var(--accent)!important;
-      font-size:1.5rem;
-      letter-spacing:0.5px;
-    }
-    .navbar-brand i{color:var(--primary);margin-right:8px}
-    
-    .nav-link{
-      color:var(--dark)!important;
-      font-weight:500;
-      font-size:0.95rem;
-      padding:0.5rem 1rem!important;
-      transition:color 0.3s ease;
-    }
-    .nav-link:hover{color:var(--primary)!important}
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
-    /* HERO */
-    .hero{
-      min-height:90vh;
-      display:flex;
-      align-items:center;
-      position:relative;
-      background:linear-gradient(135deg,rgba(26,26,26,0.6),rgba(139,105,20,0.4)),url('https://images.unsplash.com/photo-1519741497674-611481863552?w=2000&q=80');
-      background-size:cover;
-      background-position:center;
-      background-attachment:fixed;
-      color:#fff;
-      padding:120px 0 80px;
-      text-align:center;
-    }
-    
-    .hero::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle at 30% 50%,rgba(201,169,97,0.15),transparent 70%);
-    }
-    
-    .hero-content{position:relative;z-index:2}
-    .hero h1{
-      font-size:3.5rem;
-      font-weight:700;
-      margin-bottom:1rem;
-      text-shadow:0 4px 20px rgba(0,0,0,0.5);
-      animation:fadeInUp 1s ease;
-    }
-    .hero .lead{
-      font-size:1.25rem;
-      opacity:0.95;
-      margin-bottom:2rem;
-      max-width:700px;
-      margin-left:auto;
-      margin-right:auto;
-      animation:fadeInUp 1s ease 0.2s both;
-    }
-    
-    .hero-stats{
-      display:flex;
-      gap:3rem;
-      justify-content:center;
-      margin-top:3rem;
-      animation:fadeInUp 1s ease 0.4s both;
-    }
-    .hero-stat{text-align:center}
-    .hero-stat-number{
-      font-size:2.5rem;
-      font-weight:700;
-      color:var(--primary);
-      display:block;
-    }
-    .hero-stat-label{
-      font-size:0.9rem;
-      opacity:0.9;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          rel="stylesheet">
 
-    @keyframes fadeInUp{
-      from{opacity:0;transform:translateY(30px)}
-      to{opacity:1;transform:translateY(0)}
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 
-    /* BUTTONS */
-    .btn-cta{
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      border:none;
-      color:#fff;
-      padding:14px 32px;
-      border-radius:50px;
-      font-weight:600;
-      font-size:1rem;
-      box-shadow:0 10px 30px rgba(201,169,97,0.3);
-      transition:all 0.3s ease;
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-    }
-    .btn-cta:hover{
-      transform:translateY(-3px);
-      box-shadow:0 15px 40px rgba(201,169,97,0.4);
-      color:#fff;
-    }
-    
-    .btn-cta-outline{
-      border:2px solid rgba(255,255,255,0.4);
-      color:#fff;
-      background:transparent;
-      padding:12px 30px;
-      border-radius:50px;
-      font-weight:600;
-      transition:all 0.3s ease;
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-    }
-    .btn-cta-outline:hover{
-      background:rgba(255,255,255,0.15);
-      border-color:rgba(255,255,255,0.8);
-      color:#fff;
-    }
+    <style>
 
-    /* SECTION STYLING */
-    section{padding:100px 0}
-    .section-title{
-      margin-bottom:4rem;
-      text-align:center;
-    }
-    .section-title h2{
-      font-size:2.8rem;
-      color:var(--dark);
-      margin-bottom:1rem;
-      position:relative;
-      display:inline-block;
-    }
-    .section-title h2::after{
-      content:'';
-      position:absolute;
-      bottom:-10px;
-      left:50%;
-      transform:translateX(-50%);
-      width:80px;
-      height:3px;
-      background:linear-gradient(90deg,var(--primary),var(--accent));
-    }
-    .section-sub{
-      color:var(--muted);
-      font-size:1.1rem;
-      max-width:700px;
-      margin:1.5rem auto 0;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    /* SERVICES */
-    .service-card{
-      border-radius:20px;
-      background:var(--card);
-      padding:40px 30px;
-      box-shadow:0 10px 40px rgba(0,0,0,0.08);
-      transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
-      height:100%;
-      border:1px solid rgba(201,169,97,0.1);
-    }
-    .service-card:hover{
-      transform:translateY(-10px);
-      box-shadow:0 20px 60px rgba(0,0,0,0.12);
-      border-color:var(--primary);
-    }
-    
-    .service-icon{
-      width:70px;
-      height:70px;
-      border-radius:50%;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:1.8rem;
-      color:#fff;
-      margin-bottom:1.5rem;
-    }
-    
-    .service-card h5{
-      font-size:1.5rem;
-      margin-bottom:1rem;
-      color:var(--dark);
-    }
-    
-    .service-card p{color:var(--muted);margin-bottom:1.5rem}
-    
-    .list-inline-check li{
-      padding:0.4rem 0;
-      color:var(--muted);
-      font-size:0.95rem;
-    }
-    .list-inline-check i{color:var(--primary)}
+        html,
+        body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-    /* PORTFOLIO & GALLERY */
-    .portfolio-item,.gallery-card{
-      border-radius:16px;
-      overflow:hidden;
-      position:relative;
-      box-shadow:0 8px 30px rgba(0,0,0,0.1);
-      transition:all 0.4s ease;
-      cursor:pointer;
-    }
-    .portfolio-item:hover,.gallery-card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 15px 50px rgba(0,0,0,0.15);
-    }
-    
-    .portfolio-item img,.gallery-card img{
-      width:100%;
-      height:320px;
-      object-fit:cover;
-      transition:transform 0.6s ease;
-    }
-    .portfolio-item:hover img,.gallery-card:hover img{transform:scale(1.08)}
-    
-    .portfolio-caption{
-      position:absolute;
-      bottom:0;
-      left:0;
-      right:0;
-      background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);
-      color:#fff;
-      padding:30px 20px 20px;
-      font-weight:600;
-      font-size:1.1rem;
-      transform:translateY(100%);
-      transition:transform 0.4s ease;
-    }
-    .portfolio-item:hover .portfolio-caption{transform:translateY(0)}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+            color: #222;
+        }
 
-    /* GALLERY FILTER */
-    .gallery-filter{margin-bottom:3rem}
-    .gallery-filter .btn{
-      border-radius:50px;
-      padding:10px 24px;
-      margin:0 6px;
-      font-weight:500;
-      transition:all 0.3s ease;
-      border:2px solid #e5e7eb;
-    }
-    .gallery-filter .btn.active{
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      border-color:var(--primary);
-    }
+        /* Navbar */
 
-    /* VIDEO CARDS */
-    .video-card{
-      border-radius:16px;
-      overflow:hidden;
-      background:var(--card);
-      box-shadow:0 10px 40px rgba(0,0,0,0.1);
-      transition:all 0.4s ease;
-    }
-    .video-card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 20px 60px rgba(0,0,0,0.15);
-    }
-    
-    .video-thumbnail{
-      position:relative;
-      cursor:pointer;
-      overflow:hidden;
-    }
-    .video-thumbnail img{
-      width:100%;
-      height:250px;
-      object-fit:cover;
-      transition:transform 0.5s ease;
-    }
-    .video-card:hover .video-thumbnail img{transform:scale(1.05)}
-    
-    .video-play-btn{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      width:70px;
-      height:70px;
-      border-radius:50%;
-      background:rgba(201,169,97,0.95);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#fff;
-      font-size:1.5rem;
-      transition:all 0.3s ease;
-    }
-    .video-card:hover .video-play-btn{
-      width:80px;
-      height:80px;
-      background:var(--primary);
-    }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
 
-    /* PACKAGES */
-    .package-card{
-      border-radius:20px;
-      padding:40px 35px;
-      background:var(--card);
-      box-shadow:0 10px 40px rgba(0,0,0,0.08);
-      transition:all 0.4s ease;
-      text-align:center;
-      border:2px solid transparent;
-      height:100%;
-    }
-    .package-card:hover{
-      transform:translateY(-10px);
-      box-shadow:0 20px 60px rgba(0,0,0,0.12);
-    }
-    
-    .package-card.featured{
-      background:linear-gradient(135deg,#fff,#fefcf8);
-      border-color:var(--primary);
-      transform:scale(1.05);
-    }
-    .package-card.featured:hover{transform:scale(1.08) translateY(-10px)}
-    
-    .package-badge{
-      background:linear-gradient(135deg,var(--accent),var(--primary));
-      color:#fff;
-      padding:6px 16px;
-      border-radius:50px;
-      font-size:0.85rem;
-      font-weight:600;
-      display:inline-block;
-      margin-bottom:1rem;
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-    }
-    
-    .package-card h5{
-      font-size:1.8rem;
-      margin-bottom:1rem;
-      color:var(--dark);
-    }
-    
-    .package-price{
-      font-size:2.5rem;
-      font-weight:700;
-      color:var(--primary);
-      margin-bottom:0.5rem;
-    }
-    .package-price small{font-size:1rem;color:var(--muted);font-weight:400}
-    
-    .package-features{
-      list-style:none;
-      padding:1.5rem 0;
-      margin:1.5rem 0;
-      border-top:1px solid #e5e7eb;
-      border-bottom:1px solid #e5e7eb;
-    }
-    .package-features li{
-      padding:0.6rem 0;
-      color:var(--muted);
-    }
-    .package-features i{color:var(--primary);margin-right:8px}
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin-left: 15px;
+        }
 
-    /* TESTIMONIALS */
-    .testimonial-card{
-      border-radius:16px;
-      padding:35px;
-      background:var(--card);
-      box-shadow:0 8px 30px rgba(0,0,0,0.08);
-      transition:all 0.3s ease;
-      border-left:4px solid var(--primary);
-    }
-    .testimonial-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 12px 40px rgba(0,0,0,0.12);
-    }
-    
-    .testimonial-stars{
-      color:#fbbf24;
-      font-size:1.2rem;
-      margin-bottom:1rem;
-    }
-    
-    .testimonial-text{
-      font-size:1.05rem;
-      color:var(--dark);
-      line-height:1.8;
-      margin-bottom:1.5rem;
-      font-style:italic;
-    }
-    
-    .testimonial-author{
-      display:flex;
-      align-items:center;
-      gap:1rem;
-    }
-    .testimonial-avatar{
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#fff;
-      font-weight:600;
-      font-size:1.2rem;
-    }
-    .testimonial-info strong{display:block;color:var(--dark)}
-    .testimonial-info small{color:var(--muted)}
+        /* Hero */
 
-    /* WHY CHOOSE US */
-    .why-choose-card{
-      text-align:center;
-      padding:30px 20px;
-    }
-    .why-icon{
-      width:80px;
-      height:80px;
-      margin:0 auto 1.5rem;
-      border-radius:50%;
-      background:linear-gradient(135deg,rgba(201,169,97,0.1),rgba(139,105,20,0.1));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:2rem;
-      color:var(--primary);
-    }
-    .why-choose-card h5{margin-bottom:1rem;font-size:1.3rem}
-    .why-choose-card p{color:var(--muted)}
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.55),
+                rgba(0, 0, 0, 0.55)
+            ),
+            url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80')
+            center/cover no-repeat;
+        }
 
-    /* CONTACT FORM */
-    .contact-card{
-      border-radius:20px;
-      padding:50px;
-      background:var(--card);
-      box-shadow:0 15px 50px rgba(0,0,0,0.1);
-    }
-    
-    .form-label{
-      font-weight:500;
-      color:var(--dark);
-      margin-bottom:0.5rem;
-    }
-    
-    .form-control,.form-select{
-      border:2px solid #e5e7eb;
-      border-radius:12px;
-      padding:12px 16px;
-      transition:all 0.3s ease;
-    }
-    .form-control:focus,.form-select:focus{
-      border-color:var(--primary);
-      box-shadow:0 0 0 3px rgba(201,169,97,0.1);
-    }
-    
-    .contact-info-card{
-      border-radius:20px;
-      padding:40px;
-      background:linear-gradient(135deg,var(--accent),var(--primary));
-      color:#fff;
-      height:100%;
-    }
-    .contact-info-card h4{color:#fff;margin-bottom:2rem}
-    .contact-info-item{
-      display:flex;
-      align-items:start;
-      gap:1rem;
-      margin-bottom:1.5rem;
-    }
-    .contact-info-icon{
-      width:40px;
-      height:40px;
-      border-radius:50%;
-      background:rgba(255,255,255,0.2);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-shrink:0;
-    }
+        .hero-content {
+            color: white;
+            max-width: 750px;
+        }
 
-    /* LIGHTBOX */
-    .lightbox{
-      display:none;
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      background:rgba(0,0,0,0.95);
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-    }
-    .lightbox.active{display:flex}
-    
-    .lightbox-panel{
-      position:relative;
-      max-width:1200px;
-      max-height:90vh;
-      width:100%;
-    }
-    
-    .lightbox img{
-      width:100%;
-      height:auto;
-      max-height:90vh;
-      object-fit:contain;
-      border-radius:12px;
-    }
-    
-    .lb-close{
-      position:absolute;
-      top:-50px;
-      right:0;
-      background:transparent;
-      border:none;
-      color:#fff;
-      font-size:40px;
-      cursor:pointer;
-      transition:transform 0.3s ease;
-    }
-    .lb-close:hover{transform:scale(1.2)}
-    
-    .lb-nav{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      background:rgba(255,255,255,0.15);
-      backdrop-filter:blur(10px);
-      color:#fff;
-      border:none;
-      padding:20px 16px;
-      border-radius:50%;
-      font-size:1.5rem;
-      cursor:pointer;
-      transition:all 0.3s ease;
-    }
-    .lb-nav:hover{background:rgba(255,255,255,0.25)}
-    .lb-prev{left:20px}
-    .lb-next{right:20px}
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 6vw, 70px);
+            font-weight: 700;
+        }
 
-    /* FOOTER */
-    footer{
-      background:linear-gradient(135deg,#1a1a1a,#2d2d2d);
-      color:#e5e7eb;
-      padding:80px 0 30px;
-    }
-    footer h5{color:#fff;margin-bottom:1.5rem}
-    footer a{
-      color:#e5e7eb;
-      text-decoration:none;
-      transition:color 0.3s ease;
-    }
-    footer a:hover{color:var(--primary)}
-    
-    .footer-social a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:40px;
-      height:40px;
-      border-radius:50%;
-      background:rgba(255,255,255,0.1);
-      margin-right:10px;
-      transition:all 0.3s ease;
-    }
-    .footer-social a:hover{
-      background:var(--primary);
-      transform:translateY(-3px);
-    }
+        .hero p {
+            font-size: clamp(15px, 2vw, 20px);
+            margin-top: 20px;
+        }
 
-    /* REVEAL ANIMATION */
-    .reveal{
-      opacity:0;
-      transform:translateY(30px);
-      transition:all 0.8s cubic-bezier(0.4,0,0.2,1);
-    }
-    .reveal.in-view{
-      opacity:1;
-      transform:translateY(0);
-    }
+        /* Section */
 
-    /* ALERT */
-    .alert{
-      border-radius:12px;
-      border:none;
-      padding:16px 20px;
-    }
-    .alert-success{
-      background:linear-gradient(135deg,#10b981,#059669);
-      color:#fff;
-    }
+        .section {
+            padding: 70px 0;
+        }
 
-    /* RESPONSIVE */
-    @media (max-width:991px){
-      .hero h1{font-size:2.5rem}
-      .section-title h2{font-size:2.2rem}
-      .hero-stats{flex-wrap:wrap;gap:2rem}
-      .package-card.featured{transform:scale(1)}
-    }
-    
-    @media (max-width:767px){
-      .hero{padding:100px 0 60px}
-      .hero h1{font-size:2rem}
-      .hero .lead{font-size:1.1rem}
-      section{padding:60px 0}
-      .lb-prev,.lb-next{display:none}
-      .contact-card{padding:30px 20px}
-    }
-  </style>
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 45px);
+            margin-bottom: 15px;
+        }
+
+        /* Cards */
+
+        .service-card {
+            height: 100%;
+            padding: 35px 25px;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            background: white;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #0d6efd;
+            color: white;
+            font-size: 28px;
+        }
+
+        /* Gallery */
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Footer */
+
+        footer {
+            background: #111;
+            color: white;
+            padding: 40px 0;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 767px) {
+
+            .navbar-brand {
+                font-size: 20px;
+            }
+
+            .navbar-nav .nav-link {
+                margin-left: 0;
+                padding: 10px 0;
+            }
+
+            .hero {
+                min-height: 70vh;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .gallery img {
+                height: 220px;
+            }
+
+        }
+
+    </style>
 </head>
+
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#"><i class="fas fa-om"></i> Mahakal Photo Arts</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link" href="#videos">Films</a></li>
-          <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <!-- Navbar -->
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 hero-content">
-          <h1>Capturing Love Stories<br>That Last Forever</h1>
-          <p class="lead">Award-winning wedding photography & cinematic videography across Rajasthan and destination weddings worldwide</p>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
 
-          <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a class="btn btn-cta" href="#contact">Book Your Date</a>
-            <a class="btn btn-cta-outline" href="#portfolio">View Our Work</a>
-          </div>
+        <div class="container">
 
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <span class="hero-stat-number">500+</span>
-              <span class="hero-stat-label">Weddings Captured</span>
-            </div>
-            <div class="hero-stat">
-              <span class="hero-stat-number">8+</span>
-              <span class="hero-stat-label">Years Experience</span>
-            </div>
-            <div class="hero-stat">
-              <span class="hero-stat-number">15+</span>
-              <span class="hero-stat-label">Awards Won</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+            <a class="navbar-brand" href="#">
+                <i class="fa-solid fa-camera text-primary"></i>
+                Mahakal Photo Arts
+            </a>
 
-  <!-- WHY CHOOSE US -->
-  <section class="bg-white">
-    <div class="container">
-      <div class="section-title">
-        <h2>Why Choose Mahakal Photo Arts</h2>
-        <p class="section-sub">We don't just capture moments — we create timeless memories with passion and precision</p>
-      </div>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar">
 
-      <div class="row g-4">
-        <div class="col-md-3 col-sm-6 reveal">
-          <div class="why-choose-card">
-            <div class="why-icon"><i class="fas fa-award"></i></div>
-            <h5>Award-Winning</h5>
-            <p>Multiple awards for excellence in wedding photography and videography</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 reveal">
-          <div class="why-choose-card">
-            <div class="why-icon"><i class="fas fa-camera"></i></div>
-            <h5>Premium Equipment</h5>
-            <p>Latest 4K cameras, professional drones, and cinema-grade lenses</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 reveal">
-          <div class="why-choose-card">
-            <div class="why-icon"><i class="fas fa-users"></i></div>
-            <h5>Expert Team</h5>
-            <p>Professional photographers and videographers with years of experience</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 reveal">
-          <div class="why-choose-card">
-            <div class="why-icon"><i class="fas fa-heart"></i></div>
-            <h5>Personal Touch</h5>
-            <p>Every wedding is unique, and we customize our approach to your story</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                <span class="navbar-toggler-icon"></span>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Premium Services</h2>
-        <p class="section-sub">Comprehensive wedding coverage tailored to create your perfect memories</p>
-      </div>
+            </button>
 
-      <div class="row g-4">
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-plane"></i></div>
-            <h5>Destination Weddings</h5>
-            <p>Travel anywhere to capture your special day in exotic locations worldwide</p>
-            <ul class="list-unstyled list-inline-check">
-              <li><i class="fas fa-check"></i> International coverage</li>
-              <li><i class="fas fa-check"></i> Multi-day packages</li>
-              <li><i class="fas fa-check"></i> Local permits arranged</li>
-              <li><i class="fas fa-check"></i> Travel coordination included</li>
-              <li><i class="fas fa-check"></i> Scout location visits</li>
-            </ul>
-          </div>
-        </div>
+            <div class="collapse navbar-collapse" id="mainNavbar">
 
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-broadcast-tower"></i></div>
-            <h5>Live Streaming</h5>
-            <p>Share your special moments with loved ones who can't attend in person</p>
-            <ul class="list-unstyled list-inline-check">
-              <li><i class="fas fa-check"></i> HD live broadcast</li>
-              <li><i class="fas fa-check"></i> Multiple camera angles</li>
-              <li><i class="fas fa-check"></i> Professional audio</li>
-              <li><i class="fas fa-check"></i> Recorded for later viewing</li>
-              <li><i class="fas fa-check"></i> Private or public options</li>
-            </ul>
-          </div>
-        </div>
+                <ul class="navbar-nav ms-auto">
 
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-gift"></i></div>
-            <h5>Custom Packages</h5>
-            <p>Build your perfect package with our flexible add-ons and services</p>
-            <ul class="list-unstyled list-inline-check">
-              <li><i class="fas fa-check"></i> Photo + Video bundles</li>
-              <li><i class="fas fa-check"></i> Additional photographers</li>
-              <li><i class="fas fa-check"></i> Extended hour coverage</li>
-              <li><i class="fas fa-check"></i> Priority editing & delivery</li>
-              <li><i class="fas fa-check"></i> Photo booth rentals</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio" class="bg-white">
-    <div class="container">
-      <div class="section-title">
-        <h2>Featured Portfolio</h2>
-        <p class="section-sub">A curated collection of our most memorable wedding moments</p>
-      </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
 
-      <div class="row g-4">
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="portfolio-item">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80" alt="Traditional wedding ceremony">
-            <div class="portfolio-caption">Royal Jaipur Wedding</div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="portfolio-item">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80" alt="Romantic couple portrait">
-            <div class="portfolio-caption">Garden Romance</div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="portfolio-item">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80" alt="Reception celebration">
-            <div class="portfolio-caption">Grand Reception</div>
-          </div>
-        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
 
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="portfolio-item">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&q=80" alt="Wedding vows">
-            <div class="portfolio-caption">Sacred Vows</div>
-          </div>
-        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
 
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="portfolio-item">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80" alt="Bridal portrait">
-            <div class="portfolio-caption">Bridal Elegance</div>
-          </div>
-        </div>
+                </ul>
 
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="portfolio-item">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80" alt="Outdoor ceremony">
-            <div class="portfolio-caption">Desert Destination</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div class="container">
-      <div class="section-title">
-        <h2>Photo Gallery</h2>
-        <p class="section-sub">Browse our collection by category - click any image to view full screen</p>
-      </div>
-
-      <div class="gallery-filter text-center">
-        <button class="btn btn-sm active" data-filter="all">All</button>
-        <button class="btn btn-sm" data-filter="ceremony">Ceremony</button>
-        <button class="btn btn-sm" data-filter="couple">Couples</button>
-        <button class="btn btn-sm" data-filter="reception">Reception</button>
-        <button class="btn btn-sm" data-filter="details">Details</button>
-      </div>
-
-      <div class="row g-4 gallery-grid">
-        <div class="col-lg-4 col-md-6 reveal gallery-item" data-category="ceremony">
-          <div class="gallery-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80" alt="Wedding ceremony" class="gallery-img" data-index="0">
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal gallery-item" data-category="couple">
-          <div class="gallery-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80" alt="Couple outdoor" class="gallery-img" data-index="1">
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal gallery-item" data-category="reception">
-          <div class="gallery-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80" alt="Reception details" class="gallery-img" data-index="2">
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal gallery-item" data-category="ceremony">
-          <div class="gallery-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&q=80" alt="Wedding vows" class="gallery-img" data-index="3">
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal gallery-item" data-category="reception">
-          <div class="gallery-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&q=80" alt="First dance" class="gallery-img" data-index="4">
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal gallery-item" data-category="couple">
-          <div class="gallery-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&q=80" alt="Engagement" class="gallery-img" data-index="5">
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal gallery-item" data-category="details">
-          <div class="gallery-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80" alt="Wedding rings" class="gallery-img" data-index="6">
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal gallery-item" data-category="ceremony">
-          <div class="gallery-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80" alt="Ceremony moment" class="gallery-img" data-index="7">
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal gallery-item" data-category="details">
-          <div class="gallery-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80" alt="Decoration details" class="gallery-img" data-index="8">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEOS -->
-  <section id="videos" class="bg-white">
-    <div class="container">
-      <div class="section-title">
-        <h2>Wedding Films</h2>
-        <p class="section-sub">Cinematic highlights and feature-length films crafted with care</p>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="video-card">
-            <div class="video-thumbnail" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1200&q=80" alt="Pre-wedding film">
-              <div class="video-play-btn"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="p-3">
-              <h6 class="mb-2">Anjali & Vikram — Pre-Wedding</h6>
-              <p class="text-muted small mb-2">A beautiful love story shot in the hills of Udaipur</p>
-              <small class="text-muted"><i class="far fa-clock me-1"></i>2:30 mins</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="video-card">
-            <div class="video-thumbnail" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80" alt="Wedding highlights">
-              <div class="video-play-btn"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="p-3">
-              <h6 class="mb-2">Priya & Rahul — Wedding Day</h6>
-              <p class="text-muted small mb-2">Traditional Rajasthani wedding in Jaipur palace</p>
-              <small class="text-muted"><i class="far fa-clock me-1"></i>5:45 mins</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="video-card">
-            <div class="video-thumbnail" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80" alt="Destination wedding">
-              <div class="video-play-btn"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="p-3">
-              <h6 class="mb-2">Destination Wedding — Goa</h6>
-              <p class="text-muted small mb-2">Beach wedding with stunning sunset ceremony</p>
-              <small class="text-muted"><i class="far fa-clock me-1"></i>8:20 mins</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PACKAGES -->
-  <section id="packages">
-    <div class="container">
-      <div class="section-title">
-        <h2>Wedding Packages</h2>
-        <p class="section-sub">Transparent pricing with customizable options to fit your needs</p>
-      </div>
-
-      <div class="row g-4 justify-content-center">
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="package-card">
-            <h5>Essential</h5>
-            <div class="package-price">₹50,000 <small>/ day</small></div>
-            <p class="text-muted mb-0">Perfect for intimate ceremonies</p>
-            
-            <ul class="package-features">
-              <li><i class="fas fa-check"></i> 6 hours coverage</li>
-              <li><i class="fas fa-check"></i> 1 professional photographer</li>
-              <li><i class="fas fa-check"></i> 300+ edited photos</li>
-              <li><i class="fas fa-check"></i> Online gallery</li>
-              <li><i class="fas fa-check"></i> 30-day delivery</li>
-            </ul>
-            
-            <a class="btn btn-outline-dark w-100" href="#contact">Select Package</a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="package-card featured">
-            <div class="package-badge">Most Popular</div>
-            <h5>Premium</h5>
-            <div class="package-price">₹1,20,000 <small>/ day</small></div>
-            <p class="text-muted mb-0">Complete wedding coverage</p>
-            
-            <ul class="package-features">
-              <li><i class="fas fa-check"></i> Full day coverage (12 hours)</li>
-              <li><i class="fas fa-check"></i> 2 photographers + 1 videographer</li>
-              <li><i class="fas fa-check"></i> 600+ edited photos</li>
-              <li><i class="fas fa-check"></i> Cinematic highlight film (5-7 mins)</li>
-              <li><i class="fas fa-check"></i> Drone coverage</li>
-              <li><i class="fas fa-check"></i> Online gallery + USB</li>
-              <li><i class="fas fa-check"></i> 20-day priority delivery</li>
-            </ul>
-            
-            <a class="btn btn-cta w-100" href="#contact">Select Package</a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="package-card">
-            <h5>Luxury</h5>
-            <div class="package-price">₹2,50,000 <small>/ event</small></div>
-            <p class="text-muted mb-0">Ultimate wedding experience</p>
-            
-            <ul class="package-features">
-              <li><i class="fas fa-check"></i> Multi-day coverage (3 days)</li>
-              <li><i class="fas fa-check"></i> 3 photographers + 2 videographers</li>
-              <li><i class="fas fa-check"></i> 1000+ edited photos</li>
-              <li><i class="fas fa-check"></i> Feature film (15-20 mins)</li>
-              <li><i class="fas fa-check"></i> Same-day edit option</li>
-              <li><i class="fas fa-check"></i> Drone + gimbal coverage</li>
-              <li><i class="fas fa-check"></i> Premium leather album (40 pages)</li>
-              <li><i class="fas fa-check"></i> 15-day express delivery</li>
-            </ul>
-            
-            <a class="btn btn-outline-dark w-100" href="#contact">Select Package</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center mt-5">
-        <p class="text-muted mb-3">Need a custom package? We can create something perfect for you!</p>
-        <a class="btn btn-cta-outline" href="#contact" style="color:var(--dark);border-color:var(--dark)">Request Custom Quote</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="bg-white">
-    <div class="container">
-      <div class="section-title">
-        <h2>What Couples Say</h2>
-        <p class="section-sub">Real reviews from our happy clients</p>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"Mahakal Photo Arts exceeded all our expectations! They captured every emotion perfectly and made us feel so comfortable throughout the day. The photos are absolutely stunning!"</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">P</div>
-              <div class="testimonial-info">
-                <strong>Priya & Rahul</strong>
-                <small>Jaipur, November 2024</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"The team was incredibly professional and creative. Our wedding film brought tears to our eyes. They truly captured the magic of our destination wedding in Udaipur!"</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">A</div>
-              <div class="testimonial-info">
-                <strong>Anjali & Vikram</strong>
-                <small>Udaipur, October 2024</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"From pre-wedding to reception, every moment was captured beautifully. The drone footage was breathtaking! Highly recommend for anyone looking for premium wedding photography."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">S</div>
-              <div class="testimonial-info">
-                <strong>Simran & Arjun</strong>
-                <small>Jodhpur, September 2024</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"The attention to detail was remarkable. They captured shots we didn't even know we wanted! The album quality is museum-grade. Worth every penny!"</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">N</div>
-              <div class="testimonial-info">
-                <strong>Neha & Karan</strong>
-                <small>Jaisalmer, August 2024</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"Our families were spread across continents, but the live streaming service meant everyone could be part of our special day. The quality was excellent!"</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">M</div>
-              <div class="testimonial-info">
-                <strong>Meera & Rohan</strong>
-                <small>Delhi, July 2024</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"Choosing Mahakal Photo Arts was the best decision we made for our wedding. They're not just photographers—they're artists who tell stories through their lens."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">D</div>
-              <div class="testimonial-info">
-                <strong>Divya & Aditya</strong>
-                <small>Pushkar, June 2024</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 reveal">
-          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&q=80" alt="Our team" class="img-fluid rounded" style="box-shadow:0 20px 60px rgba(0,0,0,0.15)">
-        </div>
-        <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0 reveal">
-          <h2 class="mb-4">About Mahakal Photo Arts</h2>
-          <p class="text-muted mb-4">Founded in 2015, Mahakal Photo Arts has grown from a passion project into one of Rajasthan's most sought-after wedding photography studios. Our journey began with a simple belief: every wedding tells a unique love story that deserves to be captured beautifully.</p>
-          
-          <p class="text-muted mb-4">With over 500 weddings captured across India and internationally, we've perfected the art of blending into your celebration while capturing every precious moment—from the grand ceremonies to the intimate glances that make your day truly special.</p>
-          
-          <div class="row g-3 mb-4">
-            <div class="col-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fas fa-award text-primary" style="font-size:1.5rem"></i>
-                <div>
-                  <strong class="d-block">15+ Awards</strong>
-                  <small class="text-muted">Industry Recognition</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fas fa-camera text-primary" style="font-size:1.5rem"></i>
-                <div>
-                  <strong class="d-block">500+ Weddings</strong>
-                  <small class="text-muted">Successfully Captured</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fas fa-users text-primary" style="font-size:1.5rem"></i>
-                <div>
-                  <strong class="d-block">Expert Team</strong>
-                  <small class="text-muted">10+ Professionals</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fas fa-star text-primary" style="font-size:1.5rem"></i>
-                <div>
-                  <strong class="d-block">5.0 Rating</strong>
-                  <small class="text-muted">From 200+ Reviews</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <a class="btn btn-cta" href="#contact">Work With Us</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="bg-white">
-    <div class="container">
-      <div class="section-title">
-        <h2>Let's Create Magic Together</h2>
-        <p class="section-sub">Tell us about your wedding and we'll respond within 24 hours with a personalized quote</p>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-lg-8 reveal">
-          <div class="contact-card">
-            <form id="bookingForm" novalidate>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label" for="name">Your Name *</label>
-                  <input class="form-control" id="name" required placeholder="John" name="name">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label" for="partnerName">Partner's Name *</label>
-                  <input class="form-control" id="partnerName" required placeholder="Jane" name="partnerName">
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for="email">Email Address *</label>
-                  <input class="form-control" id="email" type="email" required placeholder="john@example.com" name="email">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label" for="phone">Phone Number *</label>
-                  <input class="form-control" id="phone" inputmode="tel" required placeholder="+91 9XXXX XXXXX" name="phone">
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for="weddingDate">Wedding Date *</label>
-                  <input class="form-control" id="weddingDate" type="date" required name="weddingDate">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label" for="service">Service Required *</label>
-                  <select class="form-select" id="service" required name="service">
-                    <option value="">Select a service...</option>
-                    <option value="photography">Photography Only</option>
-                    <option value="videography">Videography Only</option>
-                    <option value="both">Photography & Videography</option>
-                    <option value="custom">Custom Package</option>
-                  </select>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label" for="venue">Wedding Venue *</label>
-                  <input class="form-control" id="venue" required placeholder="City or venue name" name="venue">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label" for="guestCount">Estimated Guest Count</label>
-                  <input class="form-control" id="guestCount" type="number" placeholder="200" name="guestCount">
-                </div>
-
-                <div class="col-12">
-                  <label class="form-label" for="message">Tell Us About Your Wedding</label>
-                  <textarea class="form-control" id="message" rows="4" placeholder="Share your vision, special requests, timing details, or anything else you'd like us to know..." name="message"></textarea>
-                </div>
-
-                <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
-                    <label class="form-check-label" for="newsletter">
-                      Send me wedding planning tips and photography inspiration
-                    </label>
-                  </div>
-                </div>
-
-                <div class="col-12 text-center">
-                  <button class="btn btn-cta px-5" type="submit">Send Inquiry</button>
-                  <p class="small text-muted mt-3">We'll respond within 24 hours with availability and pricing</p>
-                </div>
-              </div>
-
-              <div id="successMessage" class="alert alert-success mt-4" style="display:none">
-                <i class="fas fa-check-circle me-2"></i> Thank you! We've received your inquiry and will contact you within 24 hours.
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div class="col-lg-4 reveal">
-          <div class="contact-info-card">
-            <h4>Get In Touch</h4>
-            
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div>
-                <strong class="d-block mb-1">Studio Location</strong>
-                <span class="text-white">Rajsamand<br>Rajasthan 302017</span>
-              </div>
             </div>
 
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <i class="fas fa-phone"></i>
-              </div>
-              <div>
-                <strong class="d-block mb-1">Phone</strong>
-                <a href="tel:+91xxxxxxxxxx" class="text-white text-decoration-none">+91 9XXXX XXXXX</a><br>
-                <small class="opacity-75">Mon-Sat, 10 AM - 7 PM</small>
-              </div>
-            </div>
+        </div>
 
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div>
-                <strong class="d-block mb-1">Email</strong>
-                <a href="mailto:info@mahakalphotoarts.com" class="text-white text-decoration-none">info@mahakalphotoarts.com</a><br>
-                <small class="opacity-75">24-hour response time</small>
-              </div>
-            </div>
+    </nav>
 
-            <div class="mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,0.2)">
-              <strong class="d-block mb-3">Follow Our Journey</strong>
-              <div class="d-flex gap-2">
-                <a href="#" class="text-white" style="width:45px;height:45px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
-                  <i class="fab fa-instagram"></i>
+
+    <!-- Hero -->
+
+    <section id="home" class="hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <h1>
+                    Capturing Your
+                    <br>
+                    Beautiful Moments
+                </h1>
+
+                <p>
+                    Wedding Photography & Videography
+                    crafted with passion and creativity.
+                </p>
+
+                <a href="#contact" class="btn btn-primary btn-lg mt-3">
+                    <i class="fa-solid fa-phone me-2"></i>
+                    Contact Us
                 </a>
-                <a href="#" class="text-white" style="width:45px;height:45px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="text-white" style="width:45px;height:45px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
-                  <i class="fab fa-youtube"></i>
-                </a>
-                <a href="#" class="text-white" style="width:45px;height:45px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
-                  <i class="fab fa-whatsapp"></i>
-                </a>
-              </div>
+
             </div>
-          </div>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FAQ SECTION -->
-  <section id="faq" style="background:linear-gradient(135deg,#fafaf9,#fff)">
-    <div class="container">
-      <div class="section-title">
-        <h2>Frequently Asked Questions</h2>
-        <p class="section-sub">Everything you need to know about booking with us</p>
-      </div>
+    </section>
 
-      <div class="row justify-content-center">
-        <div class="col-lg-8 reveal">
-          <div class="accordion" id="faqAccordion">
-            <div class="accordion-item mb-3" style="border:none;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.06)">
-              <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" style="border-radius:12px;font-weight:600">
-                  How far in advance should we book?
-                </button>
-              </h2>
-              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">
-                  We recommend booking 6-12 months in advance, especially for peak wedding season (October-March). However, we understand that sometimes plans come together quickly, so reach out regardless of your timeline and we'll do our best to accommodate you.
+
+    <!-- Services -->
+
+    <section id="services" class="section">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <h2 class="section-title">
+                    Our Services
+                </h2>
+
+                <p class="text-muted">
+                    Professional photography for your special moments.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+
+                        <h4>Wedding Photography</h4>
+
+                        <p class="text-muted">
+                            Beautifully capture every important
+                            moment of your wedding.
+                        </p>
+
+                    </div>
+
                 </div>
-              </div>
-            </div>
 
-            <div class="accordion-item mb-3" style="border:none;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.06)">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" style="border-radius:12px;font-weight:600">
-                  Do you travel for destination weddings?
-                </button>
-              </h2>
-              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">
-                  Absolutely! We love destination weddings and have covered events across India and internationally. Travel and accommodation costs are typically covered by the client, but we handle all the logistics and planning to make it seamless.
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+
+                        <h4>Videography</h4>
+
+                        <p class="text-muted">
+                            Cinematic wedding films that preserve
+                            your memories forever.
+                        </p>
+
+                    </div>
+
                 </div>
-              </div>
-            </div>
 
-            <div class="accordion-item mb-3" style="border:none;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.06)">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" style="border-radius:12px;font-weight:600">
-                  When will we receive our photos and videos?
-                </button>
-              </h2>
-              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">
-                  Photo sneak peeks are delivered within 48-72 hours. Full edited photo galleries are delivered within 3-4 weeks. Wedding films take 6-8 weeks for completion. Premium packages include priority delivery with faster turnaround times.
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+
+                        <h4>Pre-Wedding</h4>
+
+                        <p class="text-muted">
+                            Creative pre-wedding photography
+                            designed around your story.
+                        </p>
+
+                    </div>
+
                 </div>
-              </div>
+
             </div>
 
-            <div class="accordion-item mb-3" style="border:none;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.06)">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" style="border-radius:12px;font-weight:600">
-                  What equipment do you use?
-                </button>
-              </h2>
-              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">
-                  We use professional-grade Canon and Sony cameras with premium lenses, DJI drones for aerial shots, gimbals for smooth video footage, and professional lighting equipment. All our gear is backed up to ensure no technical issues affect your special day.
+        </div>
+
+    </section>
+
+
+    <!-- Gallery -->
+
+    <section id="gallery" class="section bg-light">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <h2 class="section-title">
+                    Our Gallery
+                </h2>
+
+            </div>
+
+            <div class="row g-3 gallery">
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+                         alt="Wedding Photography">
                 </div>
-              </div>
-            </div>
 
-            <div class="accordion-item mb-3" style="border:none;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.06)">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" style="border-radius:12px;font-weight:600">
-                  Can we customize a package?
-                </button>
-              </h2>
-              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">
-                  Yes! Our packages are fully customizable. You can add extra hours, additional team members, albums, prints, or any other services. We'll work with you to create a package that perfectly fits your needs and budget.
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80"
+                         alt="Wedding Couple">
                 </div>
-              </div>
-            </div>
 
-            <div class="accordion-item" style="border:none;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.06)">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" style="border-radius:12px;font-weight:600">
-                  What is your payment structure?
-                </button>
-              </h2>
-              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">
-                  We require a 30% booking fee to secure your date, 40% one month before the wedding, and the remaining 30% upon delivery of photos/videos. We accept bank transfers, UPI, and credit cards.
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80"
+                         alt="Wedding Event">
                 </div>
-              </div>
+
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <h5 class="mb-3"><i class="fas fa-om me-2"></i> Mahakal Photo Arts</h5>
-          <p class="small mb-3">Creating timeless wedding memories since 2015. We're passionate about capturing the authentic moments that make your celebration unique.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-          </div>
         </div>
 
-        <div class="col-lg-2 col-md-4 col-6">
-          <h6 class="mb-3">Quick Links</h6>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="#services">Services</a></li>
-            <li class="mb-2"><a href="#portfolio">Portfolio</a></li>
-            <li class="mb-2"><a href="#packages">Packages</a></li>
-            <li class="mb-2"><a href="#about">About Us</a></li>
-            <li class="mb-2"><a href="#contact">Contact</a></li>
-          </ul>
+    </section>
+
+
+    <!-- Contact -->
+
+    <section id="contact" class="section">
+
+        <div class="container">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-12 col-lg-6">
+
+                    <h2 class="section-title">
+                        Let's Capture Your Story
+                    </h2>
+
+                    <p class="text-muted">
+                        Get in touch with us for wedding photography,
+                        videography and pre-wedding shoots.
+                    </p>
+
+                </div>
+
+
+                <div class="col-12 col-lg-6">
+
+                    <div class="card border-0 shadow-sm p-4">
+
+                        <h4 class="mb-3">
+                            Contact Us
+                        </h4>
+
+                        <p>
+                            <i class="fa-solid fa-phone text-primary me-2"></i>
+                            +91 98765 43210
+                        </p>
+
+                        <p>
+                            <i class="fa-solid fa-envelope text-primary me-2"></i>
+                            info@mahakalphotoarts.com
+                        </p>
+
+                        <button class="btn btn-primary w-100">
+                            Contact Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="col-lg-2 col-md-4 col-6">
-          <h6 class="mb-3">Services</h6>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="#services">Photography</a></li>
-            <li class="mb-2"><a href="#services">Videography</a></li>
-            <li class="mb-2"><a href="#services">Pre-Wedding</a></li>
-            <li class="mb-2"><a href="#services">Destination</a></li>
-            <li class="mb-2"><a href="#services">Albums</a></li>
-          </ul>
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <h5>Mahakal Photo Arts</h5>
+
+            <p class="mb-0">
+                © 2026 Mahakal Photo Arts. All Rights Reserved.
+            </p>
+
         </div>
 
-        <div class="col-lg-4 col-md-4">
-          <h6 class="mb-3">Contact Info</h6>
-          <ul class="list-unstyled small">
-            <li class="mb-2">
-              <i class="fas fa-map-marker-alt me-2"></i>
-              Rajsamand, Rajasthan
-            </li>
-            <li class="mb-2">
-              <i class="fas fa-phone me-2"></i>
-              <a href="tel:+91xxxxxxxxxx">+91 9xx-xx-xxxxxx</a>
-            </li>
-            <li class="mb-2">
-              <i class="fas fa-envelope me-2"></i>
-              <a href="mailto:info@mahakalphotoarts.com">info@mahakalphotoarts.com</a>
-            </li>
-            <li class="mb-2">
-              <i class="fas fa-clock me-2"></i>
-              Mon-Sat: 10 AM - 7 PM
-            </li>
-          </ul>
-        </div>
-      </div>
+    </footer>
 
-      <hr class="my-4" style="border-color:rgba(255,255,255,0.1)">
 
-      <div class="row align-items-center">
-        <div class="col-md-6 text-center text-md-start">
-          <small>© <span id="year"></span> Mahakal Photo Arts. All rights reserved.</small>
-        </div>
-        <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-          <small>
-            <a href="#" class="me-3">Privacy Policy</a>
-            <a href="#" class="me-3">Terms of Service</a>
-            <a href="#">Sitemap</a>
-          </small>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <!-- Bootstrap JS -->
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
-    <div class="lightbox-panel">
-      <button class="lb-close" aria-label="Close" id="lbClose">&times;</button>
-      <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-      <button class="lb-nav lb-next" id="lbNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-      <img id="lightboxImg" alt="Expanded photo">
-    </div>
-  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    </script>
 
-  <!-- VIDEO MODAL -->
-  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content" style="background:transparent;border:none">
-        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close" style="z-index:1"></button>
-        <div class="ratio ratio-16x9">
-          <iframe id="modalVideo" src="" title="Video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- SCROLL TO TOP BUTTON -->
-  <button id="scrollTop" style="position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;box-shadow:0 4px 20px rgba(0,0,0,0.2);cursor:pointer;z-index:1000;display:none;transition:all 0.3s ease">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+    <!-- Service Worker -->
 
-  <!-- SCRIPTS -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <script>
-    // Current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <script>
 
-    // Set minimum date for wedding date input
-    const today = new Date().toISOString().split('T')[0];
-    const weddingDateInput = document.getElementById('weddingDate');
-    if (weddingDateInput) {
-      weddingDateInput.setAttribute('min', today);
-    }
+        if ("serviceWorker" in navigator) {
 
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar');
-      if (!navbar) return;
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
+            window.addEventListener("load", function () {
 
-    // Scroll to top button
-    const scrollTopBtn = document.getElementById('scrollTop');
-    window.addEventListener('scroll', function() {
-      if (!scrollTopBtn) return;
-      if (window.scrollY > 300) {
-        scrollTopBtn.style.display = 'block';
-      } else {
-        scrollTopBtn.style.display = 'none';
-      }
-    });
+                navigator.serviceWorker
+                    .register("./sw.js")
+                    .then(function (registration) {
 
-    if (scrollTopBtn) {
-      scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
+                        console.log("Service Worker registered:",
+                            registration.scope);
 
-    // Form submission
-    $('#bookingForm').on('submit', function(e) {
-      e.preventDefault();
-      
-      if (!this.checkValidity()) {
-        this.reportValidity();
-        return;
-      }
+                    })
+                    .catch(function (error) {
 
-      // Show success message
-      $('#successMessage').fadeIn();
-      
-      // Show loading state on button
-      const btn = $(this).find('button[type="submit"]');
-      const originalText = btn.html();
-      btn.html('<i class="fas fa-spinner fa-spin me-2"></i>Sending...').prop('disabled', true);
+                        console.error(
+                            "Service Worker registration failed:",
+                            error
+                        );
 
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        this.reset();
-        btn.html(originalText).prop('disabled', false);
-        setTimeout(() => {
-          $('#successMessage').fadeOut();
-        }, 2000);
-      }, 3000);
-    });
+                    });
 
-    // Gallery filter functionality
-    document.querySelectorAll('.gallery-filter button').forEach(btn => {
-      btn.addEventListener('click', function() {
-        // Update active state
-        document.querySelectorAll('.gallery-filter button').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        
-        const filter = this.dataset.filter;
-        
-        // Filter gallery items
-        document.querySelectorAll('.gallery-item').forEach(item => {
-          if (filter === 'all' || item.dataset.category === filter) {
-            item.style.display = '';
-            setTimeout(() => {
-              item.style.opacity = '1';
-              item.style.transform = 'scale(1)';
-            }, 10);
-          } else {
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.8)';
-            setTimeout(() => {
-              item.style.display = 'none';
-            }, 300);
-          }
-        });
-      });
-    });
+            });
 
-    // Lightbox functionality
-    const images = Array.from(document.querySelectorAll('.gallery-img')).map(el => el.src);
-    let currentIndex = 0;
-
-    function openLightbox(index) {
-      currentIndex = index;
-      const imgEl = document.getElementById('lightboxImg');
-      if (!imgEl) return;
-      imgEl.src = images[currentIndex];
-      document.getElementById('lightbox').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      const lb = document.getElementById('lightbox');
-      const imgEl = document.getElementById('lightboxImg');
-      if (!lb || !imgEl) return;
-      lb.classList.remove('active');
-      imgEl.src = '';
-      document.body.style.overflow = '';
-    }
-
-    function showNext() {
-      currentIndex = (currentIndex + 1) % images.length;
-      document.getElementById('lightboxImg').src = images[currentIndex];
-    }
-
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      document.getElementById('lightboxImg').src = images[currentIndex];
-    }
-
-    // Attach click events to gallery images
-    document.querySelectorAll('.gallery-img').forEach(img => {
-      img.addEventListener('click', () => {
-        const idx = parseInt(img.dataset.index, 10) || 0;
-        openLightbox(idx);
-      });
-    });
-
-    // Lightbox controls
-    const lbClose = document.getElementById('lbClose');
-    const lbNext = document.getElementById('lbNext');
-    const lbPrev = document.getElementById('lbPrev');
-    if (lbClose) lbClose.addEventListener('click', closeLightbox);
-    if (lbNext) lbNext.addEventListener('click', showNext);
-    if (lbPrev) lbPrev.addEventListener('click', showPrev);
-
-    // Keyboard navigation for lightbox
-    document.addEventListener('keydown', function(e) {
-      const lb = document.getElementById('lightbox');
-      if (!lb || !lb.classList.contains('active')) return;
-      
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'ArrowLeft') showPrev();
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    // Click outside to close lightbox
-    const lightboxEl = document.getElementById('lightbox');
-    if (lightboxEl) {
-      lightboxEl.addEventListener('click', function(e) {
-        if (e.target === this) closeLightbox();
-      });
-    }
-
-    // Video modal functionality
-    const videoModalEl = document.getElementById('videoModal');
-    let bsModal;
-    if (videoModalEl) {
-      bsModal = new bootstrap.Modal(videoModalEl);
-    }
-    
-    document.querySelectorAll('.video-thumbnail').forEach(card => {
-      card.addEventListener('click', () => {
-        const url = card.dataset.video || '';
-        if (!url || !bsModal) return;
-        document.getElementById('modalVideo').src = url + '?autoplay=1&rel=0';
-        bsModal.show();
-      });
-    });
-
-    if (videoModalEl) {
-      videoModalEl.addEventListener('hidden.bs.modal', () => {
-        const modalVideo = document.getElementById('modalVideo');
-        if (modalVideo) modalVideo.src = '';
-      });
-    }
-
-    // Intersection Observer for reveal animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
         }
-      });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          const navHeight = document.querySelector('.navbar') ? document.querySelector('.navbar').offsetHeight : 0;
-          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-          
-          // Close mobile menu if open
-          const navbarCollapse = document.getElementById('navMenu');
-          if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-            if (bsCollapse) bsCollapse.hide();
-          }
-        }
-      });
-    });
-
-    // Phone number formatting
-    const phoneEl = document.getElementById('phone');
-    if (phoneEl) {
-      phoneEl.addEventListener('input', function() {
-        this.value = this.value.replace(/[^0-9+\-\s]/g, '');
-      });
-    }
-
-    // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-      const scrolled = window.pageYOffset;
-      const hero = document.querySelector('.hero');
-      if (hero) {
-        hero.style.backgroundPositionY = (scrolled * 0.5) + 'px';
-      }
-    });
-  </script>
 </body>
 </html>
